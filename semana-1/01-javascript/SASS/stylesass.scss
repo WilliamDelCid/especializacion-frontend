@@ -1,7 +1,7 @@
-@use "variables";
+@use "variables" with($secundary: gray);
 
 html {
-  font-family: "Poppins,sans-serif";
+  font-family: variables.$franklin;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,12 +9,12 @@ html {
 
 body {
   margin: 0;
-  background-color: rgb(215, 240, 247);
+  background-color: variables.$primary;
 }
 
 #top {
   display: flex;
-  background-color: #6d7e96;
+  background-color: variables.$tono_gris;
   text-align: left;
   padding: 0;
 }
@@ -22,7 +22,7 @@ body {
 h1 {
   margin: 8px 0 0;
   padding: 0 0 0 15px;
-  color: rgb(231, 231, 238);
+  color: variables.$beige;
 }
 
 p {
@@ -53,22 +53,23 @@ p {
 }
 
 .pac {
+  $amarillo: yellow;
   width: 10px;
-  border: 50px solid variables.$secundary;
+  border: 50px solid $amarillo;
   border-right: 50px solid transparent;
   border-radius: 50%;
 }
 
 footer {
   margin: 0;
-  background-color: #05234d;
+  background-color: variables.$color_footer;
   margin-top: 5px;
   padding: 1em;
   position: fixed;
 
   width: 100%;
   font-size: 18px;
-  color: beige;
+  color: variables.$beige;
   bottom: 0;
   text-align: center;
   line-height: 20px;
@@ -76,12 +77,12 @@ footer {
 
 @media (max-width: 600px) {
   #top {
-    background-color: crimson;
+    background-color: variables.$rojo;
   }
   .pac {
     width: 20px;
     margin: 5px;
-    border: 70px solid rgb(0, 51, 255);
+    border: 70px solid variables.$azul_marino;
     border-right: 70px solid transparent;
     border-radius: 50%;
   }
