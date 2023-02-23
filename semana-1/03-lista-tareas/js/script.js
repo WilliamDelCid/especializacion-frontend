@@ -66,6 +66,10 @@ $btnAgregar.addEventListener("click", () => {
         return;
     }
 
+    if ($tbody.children.length === 0) {
+        contador = 0;
+    }
+
     contador++;
     const $td1 = document.createElement("td");
     const $td2 = document.createElement("td");
