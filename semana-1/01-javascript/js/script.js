@@ -1,5 +1,4 @@
 document.getElementsByTagName("title")[0].innerHTML = "Cursos";
-document.title = "JEJE";
 const divTop = document.getElementById("top");
 const h1 = document.createElement("h1");
 h1.innerHTML = "Modifiicacion del DOM";
