@@ -1,0 +1,17 @@
+/* Selector de la raiz */
+:root {
+  --font-headings: "Open Sans", sans-serif;
+  --font-main: "Poppins", sans-serif;
+  --violet: hsl(257, 40%, 49%);
+  --soft-magenta: hsl(300, 69%, 71%);
+}
+
+* {
+  //El * es para que la regla se aplique a todos los elementos
+  margin: 0;
+  box-sizing: border-box; /* Para que el navegador tenga en cuenta cualquier borde y relleno */
+}
+
+body {
+  font-family: var(--font-main);
+}

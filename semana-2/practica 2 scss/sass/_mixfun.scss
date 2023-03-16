@@ -1,0 +1,21 @@
+@use "sass:math";
+/* Definir el mixin container */
+/* Con un padding de 40px arriba y abajo*/
+@mixin container($padding: 40px 0) {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: $padding;
+}
+
+@mixin media {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@function pixeles-rem($pixeles) {
+  $resultado: math.div($pixeles, 16) * 1rem;
+  @return $resultado;
+}
