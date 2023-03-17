@@ -1,0 +1,13 @@
+<h1>Informacion del alumno</h1>
+<dl>
+  <td>Nombre:</td>
+  <dd>{{ nombre }}</dd>
+  <td>Edad:</td>
+  <dd>{{ edad }}</dd>
+  <td>Llamado a mostrarInformacion</td>
+  <dd>{{ mostrarInformacion() }}</dd>
+  <td>Llamado al get:</td>
+  <dd>{{ obtenerCapitalizado }}</dd>
+</dl>
+
+<button (click)="cambiarDatos()">Cambiar Datos</button>
