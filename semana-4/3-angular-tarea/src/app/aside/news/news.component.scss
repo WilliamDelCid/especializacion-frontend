@@ -1,0 +1,45 @@
+article {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 375px;
+  background-color: var(--very-dark-blue);
+  padding: 20px;
+  font-family: var(--font-inter);
+  border: 1px solid green;
+  margin-inline: auto;
+}
+
+h3 {
+  color: var(--soft-orange);
+  font-size: 24px;
+}
+
+h4 {
+  margin-top: 20px;
+  color: var(--off-white);
+  margin-bottom: 5px;
+}
+
+p {
+  color: var(--off-white);
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+div {
+  border-bottom: 1px solid var(--dark-grayish-blue);
+}
+
+.no-space {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 991px) {
+  article {
+    margin-top: 20px;
+    width: 65%;
+    min-width: 300px;
+    max-width: 350px;
+    height: 390px;
+  }
+}

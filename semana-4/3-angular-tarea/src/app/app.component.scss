@@ -1,0 +1,7 @@
+@media only screen and (min-width: 991px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 66% 33%;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,45 @@
+section {
+  width: 100%;
+  margin-top: 40px;
+  border: 1px solid purple;
+  max-width: 590px;
+  margin-inline: auto;
+}
+article {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: 20px;
+  align-content: flex-start;
+  font-family: var(--font-inter);
+}
+
+img {
+  display: flex;
+  width: 85px;
+  height: 100px;
+}
+
+h2 {
+  margin-bottom: 8px;
+  color: var(--dark-grayish-blue);
+}
+
+h4 {
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 13px;
+  color: var(--grayish-blue);
+}
+
+@media only screen and (min-width: 991px) {
+  section {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: unset;
+    gap: 20px;
+  }
+}
