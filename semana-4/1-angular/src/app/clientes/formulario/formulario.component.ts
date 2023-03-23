@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ICliente } from '../interfaces/cliente.interface';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-formulario',
@@ -7,8 +8,10 @@ import { ICliente } from '../interfaces/cliente.interface';
   styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent {
-  @Input()
-  listaClientes: ICliente[] = [];
+  // @Input()
+  // listaClientes: ICliente[] = [];
+
+  constructor(private clienteService: ClienteService) {}
 
   nuevoCliente: ICliente = { nombre: '', telefono: '' };
   agregar(): void {
@@ -16,7 +19,8 @@ export class FormularioComponent {
       return;
     }
 
-    this.listaClientes.push(this.nuevoCliente);
+    // this.listaClientes.push(this.nuevoCliente);
+    this.clienteService.agregarCliente(this.nuevoCliente);
     this.nuevoCliente = {
       nombre: '',
       telefono: '',
