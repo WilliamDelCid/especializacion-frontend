@@ -1,0 +1,18 @@
+section {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+a {
+  background-color: rebeccapurple;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  border-radius: 10px;
+}
+
+a:hover {
+  background-color: crimson;
+}

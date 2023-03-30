@@ -1,0 +1,20 @@
+<div style="width: 100%; display: grid; place-items: center">
+  <h2
+    style="
+      width: 80%;
+      margin: 20px;
+
+      background-color: black;
+      text-align: center;
+      color: white;
+    "
+  >
+    ngFor
+  </h2>
+</div>
+<ul *ngFor="let anime of animesIsekai">
+  <li>
+    {{ anime.titulo }}
+    {{ anime.protagonista }}
+  </li>
+</ul>

@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SkeletonComponent } from '@layout/skeleton/skeleton.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
+  // Entre llaves definiremos cada una de als rutas de la aplicacion
   {
     path: ``,
     component: SkeletonComponent,
     children: [
+      // Implementado carga perezosa al implementar loadChildren
       {
         path: '',
         loadChildren: () =>
@@ -19,9 +22,21 @@ const routes: Routes = [
             (m) => m.DirectivasModule
           ),
       },
+      {
+        path: 'mascotas',
+        loadChildren: () =>
+          import('@modules/mascotas/mascotas.module').then(
+            (m) => m.MascotasModule
+          ),
+      },
     ],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'error',
+    component: ErrorComponent,
+  },
+  //Cualquier otra ruta que no sea valdiad redireccione hacia el Home
+  { path: '**', redirectTo: 'error', pathMatch: 'full' },
 ];
 
 @NgModule({

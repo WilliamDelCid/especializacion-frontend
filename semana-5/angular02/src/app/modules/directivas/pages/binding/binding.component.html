@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <p>Binding property works!</p>
+  <hr />
+  <!-- Utilizamos un binding para cambiar la propiedad disabled del input -->
+  <input
+    type="text"
+    class="form-control"
+    [placeholder]="txtPlaceHolder"
+    [disabled]="habilitar"
+  />
+  <br />
+  <input [type]="txtType" class="form-check-input" [checked]="isChecked" />
+  <hr />
+  <button type="button" [class]="clase" [disabled]="habilitar">
+    Disabled Button
+  </button>
+
+  <div class="form-check form-switch mt-3">
+    <input
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+      class="form-check-input"
+      (click)="cambiarPropiedad()"
+    />
+    <label for="flexSwitchCheckDefault" class="form-check-label">Estado</label>
+  </div>
+  <hr />
+</div>

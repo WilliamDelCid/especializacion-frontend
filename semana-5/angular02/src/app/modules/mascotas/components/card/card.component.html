@@ -1,0 +1,21 @@
+<div class="d-flex mb-5">
+  <div class="card" style="width: 15rem">
+    <img
+      class="card-img-top col-img"
+      style="background-color: #a2deee"
+      [src]="obj.img"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ obj.raza }}</h5>
+      <p>
+        <strong>{{ obj.origen }}</strong>
+      </p>
+      <p class="card-text"><strong>Peso</strong>{{ obj.peso }}</p>
+      <p class="card-text"><strong>Guardian</strong>{{ obj.guardian }}</p>
+      <a [routerLink]="['mascotas/', obj.id]" class="btn btn-primary"
+        >Leer mas</a
+      >
+    </div>
+  </div>
+</div>
