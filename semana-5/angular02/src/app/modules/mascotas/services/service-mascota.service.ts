@@ -24,4 +24,20 @@ export class ServiceMascotaService {
       return this.httpClient.get<IMascota[]>(`http://localhost:3000/mascotas/`);
     }
   }
+
+  buscarMascotaId(id: string): Observable<IMascota> {
+    if (id.length > 0) {
+      return this.httpClient.get<IMascota>(
+        `http://localhost:3000/mascotas/${id}`
+      );
+    } else {
+      return this.httpClient.get<IMascota>(`http://localhost:3000/mascotas/`);
+    }
+  }
+
+  deleteMascota(id: string): Observable<IMascota> {
+    return this.httpClient.delete<IMascota>(
+      `http://localhost:3000/mascotas/${id}`
+    );
+  }
 }
