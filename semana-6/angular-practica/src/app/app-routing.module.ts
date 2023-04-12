@@ -20,6 +20,13 @@ const routes: Routes = [
             (m) => m.ApiNekosModule
           ),
       },
+      {
+        path: 'nouryoku',
+        loadChildren: () =>
+          import('src/app/modules/nouryoku/nouryoku.module').then(
+            (m) => m.NouryokuModule
+          ),
+      },
     ],
   },
 ];
