@@ -80,8 +80,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 50%;
-    max-width: 250px;
+    width: 38%;
     height: 100%;
     background-color: #fff;
     gap: 10px;
@@ -97,9 +96,9 @@
   }
 
   li:hover{
-    background-color: red;
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
     @media screen and (min-width: 600px){
-      background-color: unset;
+      background-image: unset;
     }
   }
 
