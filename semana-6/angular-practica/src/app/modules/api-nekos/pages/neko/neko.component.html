@@ -1,1 +1,8 @@
-<p>neko works!</p>
+
+  <h1>API NEKOS</h1>
+
+  <div class="main_container">
+    <ng-container *ngFor="let neko of Neko">
+      <app-CardNeko [obj]="neko"></app-CardNeko>
+    </ng-container>
+  </div>

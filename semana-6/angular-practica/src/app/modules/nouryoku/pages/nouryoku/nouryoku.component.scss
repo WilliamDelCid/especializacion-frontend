@@ -1,0 +1,14 @@
+.main_container{
+  width: 95%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+h1{
+  text-align: center;
+  margin-bottom: 40px;
+}

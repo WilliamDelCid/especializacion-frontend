@@ -1,0 +1,42 @@
+.container{
+  width: 90%;
+  max-width: 300px;
+  height: auto;
+  margin-inline: auto;
+  background-color: #0A3342;
+  border-radius: 10px;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+  text-align: left;
+}
+
+.container:hover{
+  transform: scale(1.1);
+}
+
+img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  padding: 0;
+  object-fit: cover;
+}
+
+h2{
+  font-size: 15px;
+  font-weight: 100;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+span{
+  color: darkgoldenrod;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+p{
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
