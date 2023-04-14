@@ -10,6 +10,14 @@ export class NouryokuService {
   }
 
   get Obtener() {
-    return this.httpClient.get('http://localhost:3000/frases');
+    return this.httpClient.get(
+      'https://api.jsonbin.io/v3/b/6425dea8c0e7653a059a0ef9',
+      {
+        headers: {
+          'X-MASTER-KEY':
+            '$2b$10$THKz5626TCbFKoe9VMXyuOrJv/bTvphwkkmmL5NDdhp/9fUlrp3eG',
+        },
+      }
+    );
   }
 }

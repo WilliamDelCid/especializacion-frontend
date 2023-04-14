@@ -14,8 +14,11 @@ export class NouryokuComponent implements OnInit {
 
   ngOnInit(): void {
     this.Service.Obtener.subscribe((resp: any) => {
-      this.dato = resp;
-      console.log(this.dato);
+      const {
+        record: { frases },
+      } = resp;
+
+      this.dato = frases;
     });
   }
 }
