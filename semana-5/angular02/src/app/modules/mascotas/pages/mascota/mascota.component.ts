@@ -4,6 +4,7 @@ import { ServiceMascotaService } from '../../services/service-mascota.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import Swal from 'sweetalert2';
+import { API_PETS } from 'src/app/constants/routes/routes';
 @Component({
   selector: 'app-mascota',
   templateUrl: './mascota.component.html',
@@ -23,9 +24,29 @@ export class MascotaComponent implements OnInit {
       .subscribe((resp: IMascota) => {
         this.mascota = resp;
       });
+
+    // console.log(this.service.obtenerById('1'));
+    this.getMascota();
+    this.getMascostaPromise();
   }
+
+  getMascota(): void {
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+    this.service
+      .buscarMascotaId(id || '')
+      .subscribe((resp: any) => console.log(resp));
+  }
+
+  getMascostaPromise(): void {
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+    this.service.obtenerById(id || '').then(async (resp: any) => {
+      // this.mascota = resp;
+      console.log(resp);
+    });
+  }
+
   regresar() {
-    this.router.navigate(['mascotas/listar']);
+    this.router.navigate([API_PETS + '/listar']);
   }
 
   delete() {

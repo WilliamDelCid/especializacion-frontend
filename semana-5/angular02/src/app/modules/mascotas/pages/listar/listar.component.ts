@@ -11,11 +11,43 @@ export class ListarComponent implements OnInit {
   mascotas: IMascota[] = []; //array de mascotas
   parametroBuscar: string = ''; //parametro de busqueda
 
+  mascotasP: any[] = [];
+  datosM: string[] = [];
+  datos: any[] = ['Usuario1', 30, true, "{'salario':200}", { a: 1 }];
+
   constructor(private mascotasService: ServiceMascotaService) {}
 
   ngOnInit(): void {
     this.mascotasService.mascotas.subscribe((resp: IMascota[]) => {
       this.mascotas = resp;
+    });
+    this.listar();
+    this.mostrar();
+  }
+
+  listar() {
+    this.mascotasService.obtenerAll().then(async (resp: IMascota[]) => {
+      console.log(resp);
+      //repaso
+      let jsonArray;
+      resp.forEach((obj, number) => {
+        this.mascotasP.push(obj);
+        this.datosM.push(JSON.stringify(obj));
+        console.log(this.datosM[number]);
+      });
+      jsonArray = JSON.parse(this.datosM[0]);
+      for (const key in jsonArray) {
+        console.log('key', jsonArray[key], key);
+      }
+      console.log('Respuesta', this.mascotasP);
+      console.log('Respuesta', this.datosM);
+      console.log(jsonArray);
+
+      const { id, raza, ...datos } = jsonArray;
+      console.log(id);
+
+      const [obj1, obj2, obj3, ...losOtros] = resp;
+      console.log(obj1);
     });
   }
 
@@ -25,5 +57,21 @@ export class ListarComponent implements OnInit {
       .subscribe((resp: IMascota[]) => {
         this.mascotas = resp;
       });
+  }
+
+  mostrar() {
+    this.datos.forEach((obj) => {
+      console.log('El forEach', obj);
+    });
+
+    console.log('***********');
+    for (const key in this.datos) {
+      console.log('llaves', key);
+    }
+
+    console.log(Object.keys(this.datos));
+    for (const iterator of this.datos) {
+      console.log(iterator);
+    }
   }
 }
