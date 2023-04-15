@@ -1,0 +1,14 @@
+<section class="main_container">
+  <article class="container">
+    <img [src]="obj.url" alt="" srcset="">
+  </article>
+
+  <ng-container *ngIf="verdadero;else perrito">
+    <h1>Hola</h1>
+  </ng-container>
+
+  <ng-template #perrito>
+      <h2>Hola pequeñito</h2>
+  </ng-template>
+
+</section>
