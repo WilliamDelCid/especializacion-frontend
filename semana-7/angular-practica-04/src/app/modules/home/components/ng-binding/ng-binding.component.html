@@ -1,0 +1,11 @@
+<p>ng-binding works!</p>
+
+<ng-container *ngFor="let item of nombre">
+    <ul>
+      <li>{{item}}</li>
+    </ul>
+</ng-container>
+<form (ngSubmit)="agregar()">
+  <input type="text"  name="nombre" placeholder="Nombre" [(ngModel)]="nombreFormulario" />
+  <button >Enviar</button>
+</form>

@@ -1,0 +1,17 @@
+.lista{
+  width: 100%;
+  height: 30%;
+  display: grid;
+  place-items: center;
+  margin-top: -40px;
+}
+
+.titulo{
+  height: 30%;
+  margin-top: 40px;
+}
+
+.seleccionado{
+  background-color: orange;
+  cursor: pointer;
+}

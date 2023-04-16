@@ -1,0 +1,8 @@
+<h1 class="lista titulo">List of Animals</h1>
+
+<div class="lista">
+  <ul>
+      <li *ngFor="let item of lista" [ngClass]="{'seleccionado': elemento === elementoSeleccionado}"
+      (click)="seleccionarElemento(elemento) " #elemento>{{item}}</li>
+  </ul>
+</div>

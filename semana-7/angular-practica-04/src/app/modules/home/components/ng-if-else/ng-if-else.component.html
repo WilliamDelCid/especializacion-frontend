@@ -1,0 +1,24 @@
+<section class="container">
+  <h1>Lista de Super Heroes</h1>
+<button (click)="cambio()">change</button>
+
+  <div *ngIf="lista==undefined;else listaSuper">
+    <h1>La lista esta vacia</h1>
+  </div>
+  <ng-template #listaSuper>
+      <table>
+        <thead>
+          <th>SuperHeroes</th>
+        </thead>
+    <ng-container *ngFor="let item of lista">
+        <tbody>
+          <tr>{{item}}</tr>
+        </tbody>
+    </ng-container>
+      </table>
+  </ng-template>
+</section>
+
+
+
+

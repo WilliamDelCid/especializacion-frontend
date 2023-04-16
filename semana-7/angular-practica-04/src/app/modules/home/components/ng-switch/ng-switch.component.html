@@ -1,0 +1,23 @@
+<!-- <p>ng-switch works!</p> -->
+
+  <div class="container">
+    <div [ngSwitch]="numero">
+    <img *ngSwitchCase=1 src="assets/images/Goku2.webp" alt="">
+    <img *ngSwitchCase=2 src="assets/images/Goku3.webp" alt="">
+    <img *ngSwitchCase=3 src="assets/images/Goku4.webp" alt="">
+    <img *ngSwitchCase=4 src="assets/images/Goku5.webp" alt="">
+    <img *ngSwitchCase=5 src="assets/images/Goku6.webp" alt="">
+    <img *ngSwitchDefault src="assets/images/Goku1.webp" alt="">
+    </div>
+    <div class="button">
+      <button (click)="buttonMin()">POWER LOWER</button>
+      <button (click)="buttonMax()">POWER UP</button>
+    </div>
+  </div>
+
+<!-- <div [ngSwitch]="pais">
+  <p *ngSwitchCase="'España'">El idioma oficial de España es el español.</p>
+  <p *ngSwitchCase="'Francia'">El idioma oficial de Francia es el francés.</p>
+  <p *ngSwitchCase="'Italia'">El idioma oficial de Italia es el italiano.</p>
+  <p *ngSwitchDefault>Lo siento, no dispongo del idioma oficial de este país.</p>
+</div> -->
