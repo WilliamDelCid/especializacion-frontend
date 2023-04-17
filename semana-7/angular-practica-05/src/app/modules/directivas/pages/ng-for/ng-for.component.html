@@ -1,0 +1,4 @@
+<p>ng-for works!</p>
+<ng-container *ngFor="let persona of Personas;let i = index"  >
+  <li [ngClass]="genero(persona.genero)">Nombre: {{persona.nombre}} Edad: {{persona.edad}} Genero: {{persona.genero}} <button (click)="borrar(i)"  >Borrar</button> </li>
+</ng-container>

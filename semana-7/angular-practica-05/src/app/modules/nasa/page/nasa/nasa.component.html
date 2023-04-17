@@ -1,0 +1,6 @@
+  <ng-container *ngFor="let item of NasaObject">
+    <h1>{{item.title}}</h1>
+    <h2>{{item.date}}</h2>
+    <h2>{{item.explanation}}</h2>
+    <img [src]="item.url" alt="">
+  </ng-container>
