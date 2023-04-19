@@ -4,9 +4,6 @@
 
 <ul class="todo-list">
   <li *ngFor="let todo of todos" class="todo-item">
-    <!-- <input type="checkbox" [(ngModel)]="todo.completed">
-    <input [(ngModel)]="todo.content" [disabled]="todo.completed">
-    <button (click)="borrar(todo)">Delete</button> -->
     <div *ngIf="!todo.editing" class="todo-item-content">
       <input type="checkbox" [(ngModel)]="todo.completed" class="todo-item-checkbox">
       <span (click)="todo.editing = true" class="todo-item-text">{{ todo.content }}</span>

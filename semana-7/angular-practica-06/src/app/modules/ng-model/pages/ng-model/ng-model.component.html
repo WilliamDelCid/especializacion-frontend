@@ -1,0 +1,14 @@
+<p>ng-model works!</p>
+<input type="text"  [(ngModel)]="newTodo" placeholder="Ingrese aqui el dato" (keyup.enter)="addNew()" >
+  <ul *ngFor="let item of Todo" >
+    <ng-container *ngIf="!item.editable">
+      <li>
+        <input type="checkbox" [(ngModel)]="item.completed" >
+      <span (click)="item.editable=true" >{{item.id}}--{{item.content}}</span> <button (click)="delete(item)">borrar</button>
+    </li>
+    </ng-container>
+    <ng-container *ngIf="item.editable">
+      <input type="text" (blur)="item.editable=false" [(ngModel)]="item.content" >
+    </ng-container>
+  </ul>
+  <button (click)="borrarTodos()" [disabled]="disabled()" >Borrar Seleccionado</button>
