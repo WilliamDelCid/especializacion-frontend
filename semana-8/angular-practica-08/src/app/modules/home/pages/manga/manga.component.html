@@ -1,0 +1,16 @@
+<p>manga works!</p>
+
+  <ng-container *ngFor="let item of obj">
+    <app-card-manga [obj]="item"></app-card-manga>
+
+  </ng-container>
+  <h1>Resultado de la API</h1>
+<!-- Aquí se muestran los datos de la API -->
+
+<div class="pagination">
+  <!-- Botón para ir a la página anterior -->
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+  <!-- Botón para ir a la página siguiente -->
+  <button (click)="nextPage()" [disabled]="!hasNextPage">Siguiente</button>
+</div>
+
