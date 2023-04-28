@@ -17,7 +17,7 @@ export class ClienteComponent {
     // this.listaClientes = clienteService.listaClientes;
   } //Se usa para endpoint
 
-  listaCliente(): ICliente[] {
+  get listaCliente(): ICliente[] {
     //Se puede modificar lo que trae para entregarlo
     console.log(this.clienteService.listaClientes);
 
