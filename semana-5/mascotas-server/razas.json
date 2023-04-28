@@ -13,18 +13,6 @@
       "nutricion": "Los perros pequeños tienen un metabolismo rápido, lo que significa que queman energía a un ritmo muy alto. Con un estómago tan pequeño, esto implica que deben comer poco pero a menudo."
     },
     {
-      "id": 3,
-      "raza": "Pastor de Antolia",
-      "des": "Es un perro enorme similar al mastín con una fuere constitución. Es una raza antigua que desciende del Mastín y de otros perros pastores de Oriente Medio. Altos, atléticos y fuertes, protegían a sus rebaños de depredadores tan feroces como los osos y los lobo",
-      "img": "https://res.cloudinary.com/dznipjpqz/image/upload/v1635662619/canes/pastorDeAnatolia_icq4uq.png",
-      "origen": "Medio Oriente",
-      "peso": "59kg",
-      "guardian": "Si",
-      "salud": "La del pastor de Anatolia es, en general una raza resistente, pero, al igual que muchas otras razas, puede sufrir displasia de cadera (una enfermedad que puede provocar problemas de movilidad). Por lo tanto, es importante hacer un examen de la cadera de los perros antes de dedicarlos a la crianza.",
-      "ejercicio": "Para su tamaño, no necesita mucho ejercicio; un paseo diario de dos horas lo mantendrá feliz. Le encanta caminar, ya que sus antepasados trabajadores recorrieron muchísimos kilómetros con los pastores nómadas.",
-      "nutricion": "Los perros de raza gigante, además de tener un apetito enorme, requieren una proporción de minerales y vitaminas diferente que necesita para el buen mantenimiento de las diferentes articulaciones y cartílagos. El pastor de Anatolia es propenso a sufrir distensión del estómago y otros problemas estomacales; unas comidas más reducidas y frecuentes podrían minimizar el riesgo."
-    },
-    {
       "id": 4,
       "raza": "Pastor Ganadero",
       "des": "Este perro compacto y musculoso de tamaño medio.El pastor ganadero australiano es cauto con los desconocidos por naturaleza y tiene unos fuertes instintos protectores, por lo que es especialmente importante socialización una completa y temprana.",
