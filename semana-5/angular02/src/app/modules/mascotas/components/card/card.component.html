@@ -14,8 +14,8 @@
       <p class="card-text"><strong>Peso</strong>{{ obj.peso }}</p>
       <p class="card-text"><strong>Guardian</strong>{{ obj.guardian }}</p>
       <a [routerLink]="['/'+pets+'/', obj.id]" class="btn btn-primary"
-        >Leer mas</a
-      >
+        >Leer mas</a>
+        <a (click)="eliminarPets(obj)" class="btn btn-warning m-1"> Quitar</a>
     </div>
   </div>
 </div>

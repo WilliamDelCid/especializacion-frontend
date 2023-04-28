@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MascotasModule } from '@modules/mascotas/mascotas.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MascotasModule } from '@modules/mascotas/mascotas.module';
     CoreModule,
     SharedModule,
     MascotasModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],

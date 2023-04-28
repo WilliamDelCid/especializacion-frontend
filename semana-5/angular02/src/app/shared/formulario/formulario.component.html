@@ -1,0 +1,202 @@
+<div class="d-flex p-2 m-5">
+  <div class="container">
+    <h2>Formulario Reactivo</h2>
+    <div class="card border-primary colmd-12">
+      <div class="card-header bg-info"><strong>Datos Generalizados</strong></div>
+      <div class="card-body">
+        <form
+        class="mt-3" (ngSubmit)="guardar()" [formGroup]="formularioGeneral">
+        <div class="form-group row">
+          <div class="form-group col-md-6">
+            <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control form-control-sm" [class]="esCampoValido('nombre')"/>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('nombre')?.errors?.['required']" >Requiere un nombre</span>
+              <span *ngIf="formularioGeneral.get('nombre')?.errors?.['pattern']">
+                Nombre no valido
+              </span>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+          <input type="text" placeholder="Apellido" formControlName="apellido" class="form-control form-control-sm" [class]="esCampoValido('apellido')"/>
+          <div class="invalid-feedback">
+            <span *ngIf="formularioGeneral.get('apellido')?.errors?.['required']" >Requiere un apellido</span>
+            <span *ngIf="formularioGeneral.get('apellido')?.errors?.['pattern']">
+              Apellido no valido
+            </span>
+          </div>
+          </div>
+        </div>
+        <div class="form-group form-floating mt-3">
+            <input type="email" placeholder="Email" formControlName="email" class="form-control" [class]="esCampoValido('email')"/>
+            <label class="floatingInput">Correo</label>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('email')?.errors?.['required']" >Requiere un Email</span>
+              <span *ngIf="formularioGeneral.get('email')?.errors?.['pattern']">
+                Email no valido
+              </span>
+            </div>
+        </div>
+        <div class="form-group row">
+          <div class="form-group col-md-6 mt-1">
+            <label>Género</label>
+            <div class="form-check form-check-inline m-3">
+              <input type="radio" formControlName="genero" value="Mujer" [class]="esCampoValido('genero')" class="form-check-input">
+              <label class="form-check-label">Mujer</label>
+            </div>
+            <div class="form-check form-check-inline m-3">
+              <input type="radio" formControlName="genero" value="Hombre" [class]="esCampoValido('genero')" class="form-check-input">
+              <label class="form-check-label">Hombre</label>
+            </div>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('genero')?.errors?.['required']">Requiere el genero</span>
+            </div>
+          </div>
+          <div class="form-group col-md-6 mt-3">
+            <input type="date" placeholder="dd-mm-yyyy" formControlName="fecha" [class]="esCampoValido('fecha')" class="form-control">
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('fecha')?.errors?.['required']">
+                Requiere una fecha
+              </span>
+              <span *ngIf="formularioGeneral.get('fecha')?.errors?.['pattern']">
+                Requiere fecha valida
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group form-floating mt-3">
+          <textarea formControlName="mensaje" [class]="esCampoValido('mensaje')" rows="3" class="form-control"></textarea>
+          <label  class="floatingInput">Mensaje</label>
+          <div class="invalid-feedback">
+            <span *ngIf="formularioGeneral.get('mensaje')?.errors?.['required']">Requiere un mensaje</span>
+            <span *ngIf="formularioGeneral.get('mensaje')?.errors?.['minlength']">
+              Tamaño minimo{{formularioGeneral.get('mensaje')?.errors?.['minlength']?.requiredLength}}
+            </span>
+            <span *ngIf="formularioGeneral.get('mensaje')?.errors?.['maxlength']">
+              Tamaño maximo{{formularioGeneral.get('mensaje')?.errors?.['maxlength']?.requiredLength}}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="form-group col-md-4 mt-1">
+            <label>Departamento</label>
+            <select (ngModelChange)="deptoChange($event)" class="form-control form-select" formControlName="departamento" [class]="esCampoValido('departamento')" >
+              <option value="">Seleccione</option>
+              <option *ngFor="let dpt of departamento" [ngValue]="dpt.codigo" > {{dpt.na2}}</option>
+            </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('departamento')?.errors?.['required']">Requiere un Departamento</span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4 mt1">
+            <label>Municipio</label>
+            <select (ngModelChange)="muniChange($event)" formControlName="municipio" [class]="esCampoValido('municipio')" class="form-control form-select">
+              <option value="">Seleccione</option>
+              <option *ngFor="let muni of municipios" [ngValue]="muni.codigo" >{{muni.nam}}</option>
+            </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('municipio')?.errors?.['required']" >
+                Requiere un municipio
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4 mt1">
+            <label>Urbana Canton</label>
+            <select formControlName="canton" [class]="esCampoValido('canton')" class="form-control form-select">
+              <option value="">Seleccione</option>
+              <option *ngFor="let ctn of cantones" [ngValue]="ctn.codigo">{{ctn.nam}}</option>
+            </select>
+            <div class="invalid-feedback">
+              <span *ngIf="formularioGeneral.get('canton')?.errors?.['required']" >
+                Requiere un municipio
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row mt-2" formGroupName="direccion">
+          <div class="form-group col-md-6">
+            <input placeholder="Ubicacion" formControlName="ubicacion" [class]="noRequiereValor('direccion.ubicacion')"  type="text" class="form-control form-control-sm">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" placeholder="Colonia/Barrio" formControlName="colonia" [class]="noRequiereValor('direccion.colonia')" class="form-control form-control sm">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="form-group col-md-6 mt-1" formGroupName="gustos">
+            <label>Colores Favoritos:</label>
+            <div class="form-check form-check-inline m-3">
+              <input type="checkbox" formControlName="verde" [class]="noRequiereValor('verde')" class="form-check-input">
+              <label class="form-check-label">Verde</label>
+            </div>
+            <div class="form-check form-check-inline m-3">
+              <input type="checkbox" formControlName="rojo" [class]="noRequiereValor('rojo')" class="form-check-input">
+              <label class="form-check-label">Rojo</label>
+            </div>
+            <div class="form-check form-check-inline m-3">
+              <input type="checkbox" formControlName="negro" [class]="noRequiereValor('negro')" class="form-check-input">
+              <label class="form-check-label">Negro</label>
+            </div>
+          </div>
+          <div class="form-check form-switch col-md-6 mt-3">
+            <label for="flexSwitchCheckDefault" class="form-check-label">Estado</label>
+            <input type="checkbox" formControlName="estado" [class]="esCampoValido('estado')" class="form-check-input">
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label class="form-label mt-4">Salario</label>
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" formControlName="salario" [class]="esCampoValido('salario')">
+              <div class="invalid-feedback">
+                <span *ngIf="formularioGeneral.get('salario')?.errors?.['required']" >
+                  Requiere un salario
+                </span>
+                <span *ngIf="formularioGeneral.get('salario')?.errors?.['pattern']">
+                  Requiere valor numerico
+                </span>
+                <span *ngIf="formularioGeneral.get('salario')?.errors?.['min']">
+                  El Salario minimo es de $300.00
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <table class="table table-hover">
+              <thead>
+                <tr class="table-dark">
+                  <th>N</th>
+                  <th>Pasatiempos</th>
+                  <th>Quitar</th>
+                </tr>
+              </thead>
+              <tbody formArrayName="pasatiempos">
+                <tr *ngFor="let control of pasatiempos.controls;let i = index">
+                  <td>{{i+1}}</td>
+                  <td><input [formControlName]="i" type="text" class="form-control"></td>
+                  <td><button (click)="borrarPasatiempo(i)" class="btn btn-danger">Quitar</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <button (click)="agregarPasatiempo()" type="button" class="btn btn-primary mt-3 mb-5 btn-block">Agregar</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-outline-info mt-sm-2">
+          <i class="bi bi-database-add"></i>Guardar
+        </button>
+      </form>
+      </div>
+    </div>
+    <hr>
+    <p>Form value: {{formularioGeneral.value | json}}</p>
+    <hr>
+  </div>
+</div>

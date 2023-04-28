@@ -58,6 +58,12 @@ export class ServiceMascotaService {
     });
   }
 
+  borrarMascota(pet: IMascota): Observable<IMascota> {
+    return this.httpClient.delete<IMascota>(
+      `http://localhost:3000/mascotas/${pet.id}`
+    );
+  }
+
   deleteMascota(id: string): Observable<IMascota> {
     return this.httpClient.delete<IMascota>(
       `http://localhost:3000/mascotas/${id}`

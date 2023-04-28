@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SkeletonComponent } from '@layout/skeleton/skeleton.component';
 import { ErrorComponent } from './error/error.component';
 import { API_PETS } from './constants/routes/routes';
+import { FormularioComponent } from '@shared/formulario/formulario.component';
 
 const routes: Routes = [
   // Entre llaves definiremos cada una de als rutas de la aplicacion
@@ -29,6 +30,11 @@ const routes: Routes = [
           import('@modules/mascotas/mascotas.module').then(
             (m) => m.MascotasModule
           ),
+      },
+      {
+        path: 'formulario',
+        component: FormularioComponent,
+        title: 'Formulario',
       },
     ],
   },
