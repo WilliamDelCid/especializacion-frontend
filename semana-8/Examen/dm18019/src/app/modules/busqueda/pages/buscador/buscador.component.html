@@ -1,0 +1,10 @@
+<input type="text" class="busqueda" [(ngModel)]="dato" (keyup.enter)="mostrar()" placeholder="Buscador">
+<br>
+<br>
+<h1 style="font-size: 24px ;">Resultado</h1>
+
+<div class="card_grid">
+  <ng-container *ngFor="let item of input">
+      <app-cards [busqueda]="item" ></app-cards>
+  </ng-container>
+</div>

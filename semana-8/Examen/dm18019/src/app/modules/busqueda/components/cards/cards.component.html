@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="busqueda.id==0;else Mensaje">
+  <h1>No hay resultados</h1>
+</ng-container>
+
+<ng-template #Mensaje>
+  <section class="container">
+    <div>
+      <img width="240px"  [src]="busqueda.url" alt="">
+    <p>{{busqueda.title}}</p>
+    </div>
+  </section>
+</ng-template>

@@ -1,0 +1,10 @@
+.card_grid{
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(6,250px);
+}
+
+.busqueda{
+  height: 30px;
+  width: 300px;
+}

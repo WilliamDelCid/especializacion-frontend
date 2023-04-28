@@ -1,0 +1,13 @@
+.main-section{
+  display: grid;
+  grid-template-columns: 350px 1fr
+}
+
+.container{
+  width: 100%;
+}
+
+.card{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
