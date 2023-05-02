@@ -1,0 +1,161 @@
+.container{
+  display: none;
+  width: 100%;
+  background-color: rgba(86,88,105,0.75);
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  padding: 0.1px;
+  @media screen and (min-width:768px) {
+    display: flex;
+    width: 260px;
+
+    background-color: unset;
+  }
+  &__historial{
+    // width: 83%;
+    min-height: 100vh;
+    background-color: #202123;
+    padding: 0.1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width:768px) {
+      width: 260px;
+    }
+  }
+  &__newBotton{
+    text-align: left;
+    padding: 0.1px;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 60px;
+    width: 93%;
+    background-color: hsla(240,9%,59%,.1);
+
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    color:white;
+    border: 1px solid rgba(255,255,255,0.50);
+
+    svg{
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+  .contenido__prueba{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 143px);
+    text-align: center;
+    overflow: hidden;
+    margin-inline: auto;
+    margin-top: 20px;
+
+  }
+
+  .palabras__buscadas{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    svg{
+      font-size: 16px;
+    }
+  }
+
+  .palabras__buscadas:hover{
+    background-color: rgba(42,43,50,90%);
+    height: 44px;
+  }
+
+  .palabras__buscadas a {
+    max-width: 80%; /* Agregado */
+    // text-overflow: ellipsis; /* Agregado para agregar puntos suspensivos si el texto es demasiado largo */
+    white-space: nowrap; /* Agregado para que el texto no se divida en varias líneas */
+    overflow: hidden; /* Agregado para ocultar el texto que se sale del límite del ancho máximo */
+    text-decoration: none;
+    color: white;
+
+  }
+  &__nav{
+    height: 97px;
+    border-top: 1px solid rgba(255,255,255,0.50);
+    color: white;
+    &__upgrade{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-inline: 21px;
+      font-size: 14px;
+      margin-top: 15px;
+      &__top{
+        svg{
+          margin-right: 13px;
+        }
+      }
+      &__new{
+        font-size: 13px;
+        border-radius: 5px;
+        color: black;
+        background-color: #fae69e;
+        padding-inline: 4px;
+        height: 20px;
+      }
+    }
+  }
+
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden; /* para evitar que el texto se desborde */
+  border-right: .15em solid orange; /* crea el efecto de cursor parpadeando */
+  white-space: nowrap; /* evita que el texto se desborde en varias líneas */
+  letter-spacing: .15em; /* agrega espacio entre letras */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-right:5px solid white }
+}
+
+
+.boton_close{
+  color: white;
+  width: 34px;
+  padding: 2px;
+  margin-left: 10px;
+  margin-top: 10px;
+  @media screen and (min-width:768px) {
+    display: none;
+  }
+}
+.show{
+  display: flex;
+}
+
+.hidden{
+  display: none;
+  @media screen and (min-width:768px) {
+    display: flex;
+  }
+}

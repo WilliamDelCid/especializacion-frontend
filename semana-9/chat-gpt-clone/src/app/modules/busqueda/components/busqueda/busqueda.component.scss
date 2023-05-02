@@ -1,0 +1,44 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  margin-inline: 10px;
+  background-color: #343541;
+  padding-top: 10px;
+  @media screen and (min-width:768px) {
+    padding-inline: 40px;
+    height: 80px;
+    max-width: 780px;
+    margin-inline: auto;
+  }
+}
+input{
+  width: 95%;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  border: none;
+  background-color: #40414f;
+  border-radius: 8px  0 0 8px;
+  color: rgba(255,255,255,0.75);
+  @media screen and (min-width:768px) {
+    height: 50px;
+  }
+}
+input:focus {
+  outline: none;
+}
+button{
+  border: none;
+  background-color: #40414f;
+  border-radius: 0 8px 8px 0 ;
+  @media screen and (min-width:768px) {
+    height: 50px;
+  }
+  svg{
+    width: 24px;
+    padding: 4px;
+    display: flex;
+    margin-right: 10px;
+    color: rgba(255,255,255,0.75);
+  }
+}

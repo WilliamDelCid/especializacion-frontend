@@ -1,0 +1,24 @@
+.container{
+  background-color: #343541;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid rgba(217,217,217,0.50);
+
+  width: 100%;
+  @media screen and (min-width:768px) {
+    padding-left: 260px;
+    border-top: unset;
+  }
+}
+
+p{
+  color:rgba(255,255,255,0.75);
+  margin-top: 5px;
+  text-align: center;
+  margin-inline: 10px;
+  font-size: .70rem;
+  a{
+  color:rgba(255,255,255,0.75);
+
+  }
+}
