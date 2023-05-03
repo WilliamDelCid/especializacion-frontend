@@ -1,9 +1,7 @@
 <div class="d-flex p-2 m-5">
   <div class="container">
     <ng-container *ngIf="!mascota; else divMascota">
-      <div class="alert alert-warning" role="alert">
-        No hay datos para mostrar
-      </div>
+      <div class="alert alert-warning" role="alert">No hay datos para mostrar</div>
     </ng-container>
     <ng-template #divMascota>
       <div class="d-flex p-2" fxLayout.xs="column">
@@ -25,12 +23,22 @@
           <p>{{ mascota.ejercicio }}</p>
           <p>{{ mascota.nutricion }}</p>
           <br />
-          <button mat-button class="btn btn-success m-2" (click)="regresar()">
-            <i class="bi bi-backspace"></i>
-          </button>
+
+          <div class="form-group row">
+            <div class="form-group col-md-1">
+              <button mat-button class="btn btn-success m-2" (click)="regresar()">
+                <i class="bi bi-backspace"></i>
+              </button>
+            </div>
+          </div>
+
           <button mat-button class="btn btn-danger m-2" (click)="delete()">
             <i class="bi bi-trash"></i>
           </button>
+
+          <div class="form-group col-md-1">
+            <app-nuevo [leyenda]="'Editar'" [mascota]="mascota"></app-nuevo>
+          </div>
         </div>
       </div>
     </ng-template>

@@ -12,18 +12,12 @@ import { API_PETS } from 'src/app/constants/routes/routes';
 })
 export class MascotaComponent implements OnInit {
   mascota!: IMascota;
-  constructor(
-    private activeRoute: ActivatedRoute,
-    private service: ServiceMascotaService,
-    private router: Router
-  ) {}
+  constructor(private activeRoute: ActivatedRoute, private service: ServiceMascotaService, private router: Router) {}
 
   ngOnInit(): void {
-    this.activeRoute.params
-      .pipe(switchMap(({ id }) => this.service.buscarMascotaId(id)))
-      .subscribe((resp: IMascota) => {
-        this.mascota = resp;
-      });
+    this.activeRoute.params.pipe(switchMap(({ id }) => this.service.buscarMascotaId(id))).subscribe((resp: IMascota) => {
+      this.mascota = resp;
+    });
 
     // console.log(this.service.obtenerById('1'));
     this.getMascota();
@@ -32,16 +26,14 @@ export class MascotaComponent implements OnInit {
 
   getMascota(): void {
     const id = this.activeRoute.snapshot.paramMap.get('id');
-    this.service
-      .buscarMascotaId(id || '')
-      .subscribe((resp: any) => console.log(resp));
+    this.service.buscarMascotaId(id || '').subscribe((resp: any) => console.log(resp));
   }
 
   getMascostaPromise(): void {
     const id = this.activeRoute.snapshot.paramMap.get('id');
     this.service.obtenerById(id || '').then(async (resp: any) => {
       // this.mascota = resp;
-      console.log(resp);
+      // console.log(resp);
     });
   }
 
@@ -50,11 +42,9 @@ export class MascotaComponent implements OnInit {
   }
 
   delete() {
-    this.activeRoute.params
-      .pipe(switchMap(({ id }) => this.service.deleteMascota(id)))
-      .subscribe((resp: IMascota) => {
-        this.mascota = resp;
-      });
+    this.activeRoute.params.pipe(switchMap(({ id }) => this.service.deleteMascota(id))).subscribe((resp: IMascota) => {
+      this.mascota = resp;
+    });
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

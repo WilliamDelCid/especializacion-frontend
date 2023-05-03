@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
-import {
-  EMAIL_VALIDATE,
-  NAME_VALIDATE,
-  NUMBER_VALIDATE,
-} from 'src/app/constants/constants';
+import { EMAIL_VALIDATE, NAME_VALIDATE, NUMBER_VALIDATE } from 'src/app/constants/constants';
 import { UbicacionPaisService } from '@shared/services/ubicacion-pais.service';
 import { IPais } from '@shared/interfaces/pais.interface';
 import { map } from 'rxjs';
@@ -26,11 +22,7 @@ export class FormularioComponent implements OnInit {
   public departamento!: IPais[];
   public municipios!: IPais[];
   public cantones!: IPais[];
-  constructor(
-    private fb: FormBuilder,
-    private toastr: ToastrService,
-    private ubicacionPais: UbicacionPaisService
-  ) {}
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private ubicacionPais: UbicacionPaisService) {}
 
   ngOnInit(): void {
     this.formularioGeneral = this.iniciarFormulario();
@@ -44,14 +36,7 @@ export class FormularioComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
       genero: ['', [Validators.required]],
       fecha: ['', [Validators.required, Validators.pattern(this.isDate)]],
-      mensaje: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(200),
-        ],
-      ],
+      mensaje: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(200)]],
       departamento: ['', [Validators.required]],
       municipio: ['', [Validators.required]],
       canton: ['', [Validators.required]],
@@ -65,25 +50,14 @@ export class FormularioComponent implements OnInit {
         negro: ['', []],
       }),
       estado: ['', []],
-      salario: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(this.isMoney),
-          Validators.min(300.0),
-        ],
-      ],
+      salario: ['', [Validators.required, Validators.pattern(this.isMoney), Validators.min(300.0)]],
       pasatiempos: this.fb.array([]),
     });
   }
 
   esCampoValido(campo: string) {
     const validarCampo = this.formularioGeneral.get(campo);
-    return !validarCampo?.valid && validarCampo?.touched
-      ? 'is-invalid'
-      : validarCampo?.touched
-      ? 'is-valid'
-      : '';
+    return !validarCampo?.valid && validarCampo?.touched ? 'is-invalid' : validarCampo?.touched ? 'is-valid' : '';
   }
 
   llenarCompoDepartamentos() {
@@ -98,13 +72,7 @@ export class FormularioComponent implements OnInit {
   deptoChange(id: string): void {
     this.ubicacionPais
       .getDepa()
-      .pipe(
-        map((dp) =>
-          dp.filter(
-            (muni) => muni.codigo.startsWith(id) && muni.codigo.length == 4
-          )
-        )
-      )
+      .pipe(map((dp) => dp.filter((muni) => muni.codigo.startsWith(id) && muni.codigo.length == 4)))
       .subscribe((resp) => {
         this.municipios = resp;
       });
@@ -113,13 +81,7 @@ export class FormularioComponent implements OnInit {
   muniChange(id: string): void {
     this.ubicacionPais
       .getDepa()
-      .pipe(
-        map((dp) =>
-          dp.filter(
-            (cton) => cton.codigo.startsWith(id) && cton.codigo.length == 6
-          )
-        )
-      )
+      .pipe(map((dp) => dp.filter((cton) => cton.codigo.startsWith(id) && cton.codigo.length == 6)))
       .subscribe((resp) => {
         this.cantones = resp;
       });
@@ -149,7 +111,7 @@ export class FormularioComponent implements OnInit {
         text: 'submit disparado, formulario es valido',
         icon: 'info',
       });
-      console.log(this.formularioGeneral.value);
+      // console.log(this.formularioGeneral.value);
     } else {
       Swal.fire({
         position: 'center',
@@ -158,9 +120,7 @@ export class FormularioComponent implements OnInit {
         icon: 'warning',
       });
 
-      return Object.values(this.formularioGeneral.controls).forEach((control) =>
-        control.markAsTouched()
-      );
+      return Object.values(this.formularioGeneral.controls).forEach((control) => control.markAsTouched());
     }
   }
 }

@@ -7,12 +7,6 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FormularioComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule, ReactiveFormsModule],
 })
 export class SharedModule {}
