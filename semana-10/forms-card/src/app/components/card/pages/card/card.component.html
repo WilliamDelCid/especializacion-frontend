@@ -1,0 +1,94 @@
+<section class="container">
+  <article class="container__background">
+    <div class="container__background__card">
+
+      <div class="card__front"> 
+        <img class="container__background__card__logo" src="assets/images/card-logo.svg" alt="" />
+        <img class="container__background__card__imagen container__background__card__imagen1"
+          src="assets/images/bg-card-front.png" alt="" />
+        <label class="container__background__card__logo container__background__card__text" >{{this.formulario.get('card')?.value || '1234 5678 9123 0000' | creditCard}}</label>
+        <div class="container__background__card__logo container__background__card__paragraph">
+          <label>{{ this.formulario.get('nombre')?.value || 'Jane Appleseed' | uppercase }}</label>
+          <label> {{this.formulario.get('month')?.value || '00' }}/{{this.formulario.get('year')?.value || '00'}}</label>
+        </div>
+      </div>
+
+      <div class="card__back">
+        <img class="container__background__card__imagen container__background__card__imagen2"
+          src="assets/images/bg-card-back.png" alt="" />
+        <label class="container__background__card__logo container__background__card__cvc">
+          {{this.formulario.get('cvc')?.value || '123'}}</label>
+      </div>
+
+    </div>
+  </article>
+  <article *ngIf="!validado;else thankyou">
+    <form class="container__formulario" (ngSubmit)="guardar()" [formGroup]="formulario" >
+      <section class="container__form">
+        <div class="container__form__cardholder">
+          <label>Cardholder Name</label>
+          <input  autocomplete="off" [class]="esCampoValido('nombre')" type="text"  formControlName="nombre" class="form__input" placeholder="e.g. Jane Appleseed" />
+          <div class="invalidation">
+          <span class="invalid__span" *ngIf="formulario.get('nombre')?.errors?.['pattern']">Wrong format, letters only</span>
+          <span class="invalid__span" *ngIf="formulario.get('nombre')?.errors?.['required']">is Required</span>
+          </div>
+        </div>
+        <div class="container__form__cardholder">
+          <label>Card Number</label>
+          <input autocomplete="off" [class]="esCampoValido('card')" maxlength="16" type="text" formControlName="card" class="form__input"  placeholder="e.g. 1234 5678 9123 0000" creditCard />
+          <div class="invalidation">
+            <span class="invalid__span" *ngIf="formulario.get('card')?.errors?.['pattern']" >Wrong format, numbers only</span>
+            <span class="invalid__span" *ngIf="formulario.get('card')?.errors?.['required']">is Required</span>
+          </div>
+        </div>
+        <div class="container__form__info">
+          <div class="container__form__info__date">
+            <label>Exp. Date (MM/YY)</label>
+            <div class="container__form__info__date__input">
+              <div>
+                <input autocomplete="off" maxlength="2" [class]="esCampoValido('month')" type="text" formControlName="month" class="form__input form_input_cvc" placeholder="MM" />
+
+                <div class="prueba invalidation" >
+                  <span class="invalid__span" *ngIf="formulario.get('month')?.errors?.['pattern']">Numbers only</span>
+                  <span class="invalid__span" *ngIf="formulario.get('month')?.errors?.['required']">Required</span>
+                </div>
+              </div>
+              <div>
+                <input autocomplete="off" maxlength="2" [class]="esCampoValido('year')" type="text" formControlName="year" class="form__input form_input_cvc" placeholder="YY" />
+              <div class="prueba invalidation" >
+                <span class="invalid__span" *ngIf="formulario.get('year')?.errors?.['pattern']">Numbers only</span>
+                <span class="invalid__span" *ngIf="formulario.get('year')?.errors?.['required']">Required</span>
+              </div>
+              </div>
+          
+            </div>
+
+          </div>
+          <div class="container__form__info__cvc">
+            <label>CVC</label>
+            <input autocomplete="off" maxlength="3" [class]="esCampoValido('cvc')" type="text" formControlName="cvc"  class="form__input" placeholder="e.g. 123" />
+            <div class="prueba invalidation" >
+              <span class="invalid__span" *ngIf="formulario.get('cvc')?.errors?.['pattern']">Wrong format, numbers only</span>
+              <span class="invalid__span" *ngIf="formulario.get('cvc')?.errors?.['required']">is Required</span>
+            </div>
+          </div>
+        </div>
+        <button type="submit">Confirm</button>
+      </section>
+    </form>
+  </article>
+
+
+ <ng-template #thankyou>
+  <article class="container__completed">
+    <img class="container__completed__imagen" src="assets/images/icon-complete.svg" alt="">
+      <h1>THANK YOU!</h1>
+      <h2>We've added your card details</h2>
+      <button (click)="clickConfirm" class="container__button" >Continue</button>
+  </article>
+ </ng-template>
+</section>
+
+<!--  -->
+
+<!--  -->
