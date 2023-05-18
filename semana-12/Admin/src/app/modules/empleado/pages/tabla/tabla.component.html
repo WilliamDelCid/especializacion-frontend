@@ -1,0 +1,64 @@
+<div class="table-responsive mb-0">
+  <table class="table table-centered table-nowrap">
+    <thead class="table-light ">
+      <tr>
+        <th style="width: 20px;">
+          <div class="form-check font-size-16 align-middle">
+            <input class="form-check-input" type="checkbox" id="transactionCheck01">
+            <label class="form-check-label" for="transactionCheck01"></label>
+          </div>
+        </th>
+        <th class="align-content-center">ID</th>
+        <th class="align-middle">Nombre Empleado</th>
+        <th class="align-middle">Apellido Empleado</th>
+        <th class="align-middle">Puntaje</th>
+        <th class="d-flex justify-content-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of ListEmpleado | filter:queryString | paginate: { itemsPerPage: 10, currentPage: p } ">
+        <td>
+          <div class="form-check font-size-16">
+            <input class="form-check-input" type="checkbox" id="transactionCheck{{data.id}}">
+            <label class="form-check-label" for="transactionCheck{{data.id}}"></label>
+          </div>
+        </td>
+        <td>
+          <a href="javascript: void(0);" class="text-body fw-bold">{{data.id}}</a>
+        </td>
+        <td>{{data.nombre}}</td>
+        <td>{{data.apellido}}</td>
+        <td>{{data.puntaje}}</td>
+        <td class="d-flex justify-content-center gap-5">
+          <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content,data)">Editar</button> -->
+          <app-modal leyenda="Editar" [empleado]=data validacion=true ></app-modal>
+          <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="borrarRegistro(data)">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination pagination-rounded justify-content-end mb-2">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+   <ng-template #content role="document" let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Card</h5>
+      <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p class="mb-2">
+        Aniemaid:
+        <span class="text-primary">{{empleado.id}}</span>
+      </p>
+      <p class="mb-4">
+         Name:
+        <span class="text-primary">{{empleado.nombre}}</span>
+      </p>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+</div>
+<!-- end table -->
