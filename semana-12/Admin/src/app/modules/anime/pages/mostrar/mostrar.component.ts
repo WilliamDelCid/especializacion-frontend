@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IAnime } from '../../interface/anime';
 import { AnimeService } from '../../service/anime.service';
-
-import { barChart } from 'src/app/pages/chart/apex/data';
 import { ChartType } from 'src/app/pages/chart/apex/apex.model';
+import { ChartOptions } from '../../grafica-b/chartType.interface';
 
 
 @Component({
@@ -22,6 +21,28 @@ export class MostrarComponent implements OnInit {
   labels:string[]=[];
   dataGrafica=[];
   colores=[{backgroundColor:[]}];
+
+  dataApex: Partial<ChartOptions> = {
+    series:[
+      {
+        name: "Series",
+        data:[]
+      }
+    ],
+    chart:{
+      height: 350,
+      type: "bar"
+    },
+    title:{
+      text: ""
+    },
+    xaxis: {
+      categories: []
+    }
+  }
+
+
+
   title:string='Casa';
   constructor(private animeService: AnimeService) { }
 
@@ -35,10 +56,29 @@ export class MostrarComponent implements OnInit {
       console.log(res)
       this.cards = [...this.cards, ...res];
       this.graficar();
-      this.barChart = barChart;
 
     })
   }
+
+  // graficar(){   //Grafica 1
+  //   let grupos= {};
+  // this.cards.forEach(card=>{
+  //   const llave = card.type;
+  //   if (!grupos[llave]){
+  //     grupos[llave]=[];
+  //   }
+  //     grupos[llave].push(card);
+  // });
+  // let keyColor='backgroundColor';
+  // console.log(grupos);
+  //   for(const key in grupos){
+  //       this.labels.push(key)
+  //       this.dataGrafica.push(grupos[key].length)
+  //       this.colores[0][keyColor].push(this.colorHex());
+  //   }
+
+  // }
+
 
   graficar(){
     let grupos= {};
@@ -50,14 +90,25 @@ export class MostrarComponent implements OnInit {
       grupos[llave].push(card);
   });
   let keyColor='backgroundColor';
-  console.log(grupos);
+  let keySeries= 'series';
+  let data = 'data';
+  let xaxis = 'xaxis';
+  let categories = 'categories';
     for(const key in grupos){
         this.labels.push(key)
         this.dataGrafica.push(grupos[key].length)
         this.colores[0][keyColor].push(this.colorHex());
+
+        this.dataApex[keySeries][0][data].push(grupos[key].length);
+        this.dataApex[xaxis][categories].push(key);
     }
+    this.dataApex.title.text = "Grafica de Anime";
+    console.log("Este",this.dataApex);
+
+
 
   }
+
 
 
   generarLetra(){
