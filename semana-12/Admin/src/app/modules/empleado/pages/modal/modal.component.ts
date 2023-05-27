@@ -4,6 +4,7 @@ import { IEmpleado } from '../../interface/IEmpleado.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NAME_VALIDATE } from '../../constants/constants';
+import Swal from 'sweetalert2';
 
   @Component({
     selector: 'app-modal',
@@ -54,6 +55,9 @@ export class ModalComponent implements OnInit {
       if (this.empleado?.id) {
         const empleado = this.formularioGeneral.value;
         this.empleadoService.editarEmpleado(empleado).subscribe((resp:any)=>{
+          Swal.fire(
+            'Usuario Editado!','',            'success'
+          )
           this.formularioGeneral.reset();
           this.modalService.dismissAll();
           this.empleadoService.getEmpleado();
@@ -61,6 +65,9 @@ export class ModalComponent implements OnInit {
       }else{
         const empleado = this.formularioGeneral.value;
         this.empleadoService.nuevoEmpleado(empleado).subscribe((resp:any)=>{
+          Swal.fire(
+            'Usuario Agregado!','', 'success'
+          )
         this.formularioGeneral.reset();
         this.modalService.dismissAll();
         this.empleadoService.getEmpleado();
