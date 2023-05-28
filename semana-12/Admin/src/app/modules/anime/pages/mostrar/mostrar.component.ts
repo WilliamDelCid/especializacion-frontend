@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAnime } from '../../interface/anime';
 import { AnimeService } from '../../service/anime.service';
+import { barChart } from 'src/app/pages/chart/apex/data';
 import { ChartType } from 'src/app/pages/chart/apex/apex.model';
 import { ChartOptions } from '../../grafica-b/chartType.interface';
 
