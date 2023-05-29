@@ -9,7 +9,7 @@ import { NgxPaginationModule, PaginationService } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UIModule } from 'src/app/shared/ui/ui.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommonModule,
     LibrosRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
+    NgbPaginationModule,
     UIModule, //!Migas
     FormsModule, //!Para el Modal
     NgxPaginationModule, //!Para paginar
