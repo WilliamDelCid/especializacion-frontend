@@ -30,8 +30,8 @@
         <td>{{data.apellido}}</td>
         <td>{{data.puntaje}}</td>
         <td class="d-flex justify-content-center gap-5">
-          <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content,data)">Editar</button> -->
-          <app-modal leyenda="Editar" [empleado]=data validacion=true ></app-modal>
+          <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content,data)">Editar</button>
+          <!-- <app-modal leyenda="Editar" [empleado]=data validacion=true ></app-modal> -->
           <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="borrarRegistro(data)">Borrar</button>
         </td>
       </tr>

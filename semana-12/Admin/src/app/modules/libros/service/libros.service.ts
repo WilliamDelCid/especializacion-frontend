@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter,Injectable } from '@angular/core';
 import { ILibros } from '../interface/ILibros.interface';
 import { HttpClient } from '@angular/common/http';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +17,10 @@ export class LibrosService {
     });
   }
 
+
+ getBiblioteca(){
+  return this.http.get('http://localhost:8080/api/biblioteca/all');
+ }
 
 
   nuevoLibro(libro: ILibros):any{

@@ -6,5 +6,5 @@ export interface ILibros {
 
 export interface Biblioteca {
   id:     number;
-  nombre: string;
+  nombre?: string;
 }

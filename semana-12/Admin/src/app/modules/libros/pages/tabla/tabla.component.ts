@@ -1,19 +1,24 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, AfterViewInit, ViewChild } from "@angular/core";
 import { ILibros } from "../../interface/ILibros.interface";
 import { LibrosService } from "../../service/libros.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import Swal from "sweetalert2";
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: "app-tabla",
   templateUrl: "./tabla.component.html",
   styleUrls: ["./tabla.component.scss"],
 })
-export class TablaComponent implements OnInit {
+export class TablaComponent implements OnInit,AfterViewInit {
   @Input() ListLibros!: ILibros[];
   @Input() queryString: string;
   libro: ILibros;
   p: any;
+
+  @ViewChild(ModalComponent) addview !:ModalComponent
+
+
   constructor(
     private modalService: NgbModal,
     private librosService: LibrosService
@@ -25,6 +30,20 @@ export class TablaComponent implements OnInit {
     this.libro = libro;
     this.modalService.open(content, { centered: true });
   }
+
+  functionedit(code:any){
+
+    this.addview.LoadEditData(code);
+
+  }
+
+  ngAfterViewInit(): void {
+
+  }
+
+
+
+
 
   borrarRegistro(libro: ILibros) {
     Swal.fire({

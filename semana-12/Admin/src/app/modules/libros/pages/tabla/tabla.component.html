@@ -1,3 +1,4 @@
+<app-modal></app-modal>
 <div class="table-responsive mb-0">
   <table class="table table-centered table-nowrap">
     <thead class="table-light ">
@@ -28,9 +29,9 @@
         <td>{{data.nombre}}</td>
         <td>{{data.biblioteca.nombre}}</td>
         <td class="d-flex justify-content-center gap-5">
-          <!-- <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="openModal(content,data)">Editar</button> -->
-          <!-- <app-modal leyenda="Editar" [libro]=data validacion=true ></app-modal> -->
-          <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="borrarRegistro(data)">Borrar</button>
+          <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="functionedit(data)">Editar</button>
+          <button type="button" class="btn btn-primary btn-sm btn-rounded"
+            (click)="borrarRegistro(data)">Borrar</button>
         </td>
       </tr>
     </tbody>
@@ -38,7 +39,7 @@
   <div class="pagination pagination-rounded justify-content-end mb-2">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-   <ng-template #content role="document" let-modal>
+  <ng-template #content role="document" let-modal>
     <div class="modal-header">
       <h5 class="modal-title mt-0">Card</h5>
       <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
@@ -49,7 +50,7 @@
         <span class="text-primary">{{libro.id}}</span>
       </p>
       <p class="mb-4">
-         Name:
+        Name:
         <span class="text-primary">{{libro.nombre}}</span>
       </p>
 

@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
   })
 
 export class ModalComponent implements OnInit {
-  breadCrumbItems: Array<{}>;
   term:string = '';
   formularioGeneral!: FormGroup;
   @Input() leyenda!:string;
@@ -26,7 +25,6 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioGeneral = this.iniciarFormulario();
-    this.breadCrumbItems = [{ label: 'Empleado' }, { label: 'Mostrar', active: true }];
     this.Empleado();
   }
 
