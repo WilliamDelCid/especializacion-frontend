@@ -10,6 +10,9 @@ export class LibrosService {
 
   constructor(private http:HttpClient) { }
 
+  getUsers(page: number){
+    return this.http.get('http://localhost:8080/api/libros/all' + '?page=' + page);
+  }
 
   getLibros(){
     return this.http.get("http://localhost:8080/api/libros/all").subscribe((resp:any)=>{
