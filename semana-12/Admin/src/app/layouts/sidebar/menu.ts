@@ -842,6 +842,20 @@ export const MENU: MenuItem[] = [
                 parentId: 125
             },
         ]
-    }
+    },
+    {
+      id: 133,
+      label: 'Otros Biblioteca',
+      icon: 'bx-health',
+      subItems: [
+          {
+              id: 131,
+              label: 'Listar',
+              link: '/biblioteca/listar',
+              parentId: 133
+          },
+
+      ]
+  }
 ];
 

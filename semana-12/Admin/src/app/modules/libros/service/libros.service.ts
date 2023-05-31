@@ -10,20 +10,21 @@ export class LibrosService {
 
   constructor(private http:HttpClient) { }
 
-  getUsers(page: number){
+  getUsers(page: number){ //Paginado los mismos libros
+
     return this.http.get('http://localhost:8080/api/libros/all' + '?page=' + page);
   }
 
-  getLibros(){
+  getLibros(){ //Libros con el Record DTO
     return this.http.get("http://localhost:8080/api/libros/all").subscribe((resp:any)=>{
       this.ListLibros = resp.content;
     });
   }
 
 
- getBiblioteca(){
-  return this.http.get('http://localhost:8080/api/biblioteca/all');
- }
+   getBiblioteca(){ //Las bibliotecas sin libros
+    return this.http.get('http://localhost:8080/api/biblioteca/all');
+   }
 
 
 

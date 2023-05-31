@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { LibrosService } from '../../service/libros.service';
 import { Biblioteca, ILibros } from '../../interface/ILibros.interface';
-import { IEmpleado } from '../../../empleado/interface/IEmpleado.interface';
 import Swal from 'sweetalert2';
 
 
@@ -66,7 +65,7 @@ export class ModalComponent implements OnInit {
           )
           this.formularioGeneral.reset();
           this.modalService.dismissAll();
-          this.service.getLibros();
+          this.service.getUsers(1);
         });
       }else{
         this.service.nuevoLibro(this.libro).subscribe((resp:any)=>{
@@ -75,7 +74,7 @@ export class ModalComponent implements OnInit {
           )
         this.formularioGeneral.reset();
         this.modalService.dismissAll();
-        this.service.getLibros();
+        this.service.getUsers(1);
 
       });
       }
