@@ -1,0 +1,19 @@
+<div class="d-flex p-2 m-5">
+  <div class="container">
+    <div class="lista" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100" (scrolled)="onScroll()" >
+      <div class="cards">
+        <ng-container *ngFor="let item of resultado">
+          <app-cardscroll [card]="item" ></app-cardscroll>
+        </ng-container>
+      </div>
+      <div class="loading" *ngIf="loading">
+        <div class="dot-wave">
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+          <div class="dot-wave__dot"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
