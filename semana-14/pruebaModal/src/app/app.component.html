@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+<app-popup></app-popup>
+
+  <!-- <button (click)="openModal()" >Abrir Modal</button> -->
+  <table>
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>UserId</th>
+        <th>Titulo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td>{{ item.id }}</td>
+        <td>{{ item.userId }}</td>
+        <td>{{ item.title }}</td>
+        <td><button (click)="openModalEditar(item)" >Editar</button></td>
+        <td><a class="btn btn-primary" (click)="functionedit(item)" >Edit2</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+    <div *ngIf="modalSwitch">
+      <app-modal></app-modal>
+    </div>
+
+</body>
+</html>
