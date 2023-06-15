@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AnimeRoutingModule } from './anime-routing.module';
 import { CardComponent } from './card/card.component';
 import { ListarComponent } from './pages/listar/listar.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BuscarComponent } from './pages/buscar/buscar.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { BuscarComponent } from './pages/buscar/buscar.component';
 import { UIModule } from 'src/app/shared/ui/ui.module';
 import { TablaComponent } from './pages/tabla/tabla.component';
 import { MostrarComponent } from './pages/mostrar/mostrar.component';
@@ -34,12 +35,15 @@ import { GraficaBComponent } from './grafica-b/grafica-b.component';
     InfiniteScrollModule,
     HttpClientModule,
     ReactiveFormsModule,
-    UIModule, //!Migas
-    FormsModule, //!Para el Modal
-    NgxPaginationModule, //!Para paginar
-    Ng2SearchPipeModule,//!Pa buscar
-    NgApexchartsModule,//! Para graficas
-    ChartsModule//! Para graficas
-  ]
+    UIModule, //para las migas
+    FormsModule, //para los ngModel
+    NgxPaginationModule, // para paginar
+    Ng2SearchPipeModule,
+    NgApexchartsModule, // para los graficos
+    ChartsModule // para los graficos
+
+
+  ],
+
 })
 export class AnimeModule { }

@@ -1,6 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { IEmpleado } from '../../interface/IEmpleado.interface';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IEmpleado } from '../../interface/IEmpleado';
 import { EmpleadoService } from '../../service/empleado.service';
 import Swal from 'sweetalert2';
 
@@ -10,42 +10,41 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tabla.component.scss']
 })
 export class TablaComponent implements OnInit {
-  @Input() ListEmpleado!:IEmpleado[];
-  @Input() queryString:string;
-  empleado:IEmpleado;
-  p:any;
-  constructor(private modalService: NgbModal,private empleadoService:EmpleadoService) { }
+  @Input() empleados!: IEmpleado;
+  @Input() queryString!: string;
+  p: any;
+
+
+
+  constructor(private empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
   }
 
-  openModal(content: any,empleado:IEmpleado) {
-    this.empleado = empleado;
-    this.modalService.open(content, { centered: true });
-  }
-
-  borrarRegistro(empleado:IEmpleado){
+  eliminar(empleado: IEmpleado) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
+      title: 'Estas segurop de eliminar el registro?',
+      showDenyButton: true,
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si',
+      denyButtonText: `No`,
     }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.empleadoService.borrarEmpleado(empleado).subscribe((resp:any)=>{
-          this.empleadoService.getEmpleado();
+        this.empleadoService.deleteEmpleado(empleado).subscribe((resp: any) => {
+          console.log('elimino')
+          Swal.fire('Cambios Realizados!', '', 'success')
+          this.empleadoService.getEmpleados();
         })
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+
+      } else if (result.isDenied) {
+        Swal.fire('Acción Cancelada', '', 'info')
       }
     })
 
+
   }
+
+
 
 }

@@ -1,5 +1,9 @@
 <div class="container-fluid">
-  <app-page-title title="Empleado" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <app-page-title
+    title="Anime"
+    [breadcrumbItems]="breadCrumbItems"
+  ></app-page-title>
+
   <div class="row">
     <div class="col-12">
       <div class="card">
@@ -8,23 +12,32 @@
             <div class="col-sm-4">
               <div class="search-box me-2 mb-2 d-inline-block">
                 <div class="position-relative">
-                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term">
-
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="term"
+                  />
                   <i class="bx bx-search-alt search-icon"></i>
                 </div>
               </div>
             </div>
+
             <div class="col-sm-8">
               <div class="text-sm-end">
-                <app-modal leyenda="Agregar nuevo Empleado" ></app-modal>
+                <app-modal [leyenda]="'Nuevo Empleado'"></app-modal>
               </div>
-            </div><!-- end col-->
+            </div>
+            <!-- end col-->
           </div>
           <!-- Table data -->
-            <app-tabla [ListEmpleado]="returnList" ></app-tabla>
+
+          <app-tabla
+            [empleados]="listEmpleados"
+            [queryString]="term"
+          ></app-tabla>
         </div>
       </div>
     </div>
   </div>
-
 </div>

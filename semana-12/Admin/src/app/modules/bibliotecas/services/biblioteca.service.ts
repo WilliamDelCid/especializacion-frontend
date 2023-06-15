@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { Biblioteca } from "../models/biblioteca.model";
+import { Observable } from "rxjs";
+import { Biblioteca } from "../models/biblioteca.models";
 
 @Injectable({
   providedIn: "root",
@@ -13,12 +13,12 @@ export class BibliotecaService {
   constructor(private http: HttpClient) {}
 
   public bibliotecas(page: number, size: number): Observable<any> {
-    return this.http.get<any>(this.url + "?" + `page=${page}&size=${size}`);
+    return this.http.get(
+      this.url + '?' + `page=${page}&size=${size}`
+    );
   }
 
-
-  public bibliotecaById(biblioteca:Biblioteca):Observable<any>{
-    return this.http.get<any>(this.url+'/'+`${biblioteca.id}`)
+  public bibliotecaById(biblioteca: Biblioteca): Observable<Biblioteca> {
+    return this.http.get<Biblioteca>(this.url + '/' + `${biblioteca.id}`);
   }
-
 }

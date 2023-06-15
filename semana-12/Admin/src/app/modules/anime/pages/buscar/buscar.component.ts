@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { AnimeService } from '../../service/anime.service';
 import { debounceTime } from 'rxjs/operators';
+import { AnimeService } from '../../service/anime.service';
 
 @Component({
   selector: 'app-buscar',

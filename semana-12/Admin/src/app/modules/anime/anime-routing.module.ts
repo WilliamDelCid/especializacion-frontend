@@ -6,11 +6,11 @@ import { MostrarComponent } from './pages/mostrar/mostrar.component';
 const routes: Routes = [
   {
     path: 'listar',
-    component: ListarComponent,
+    component: ListarComponent
   },
   {
     path: 'mostrar',
-    component: MostrarComponent,
+    component: MostrarComponent
   }
 ];
 

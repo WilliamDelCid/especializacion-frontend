@@ -1,88 +1,101 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { EmpleadoService } from '../../service/empleado.service';
-import { IEmpleado } from '../../interface/IEmpleado.interface';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NAME_VALIDATE } from '../../constants/constants';
+import { VALIDATION_STRING } from '../../constants/validations';
+import { IEmpleado } from '../../interface/IEmpleado';
+import { EmpleadoService } from '../../service/empleado.service';
 import Swal from 'sweetalert2';
 
-  @Component({
-    selector: 'app-modal',
-    templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.scss']
-  })
 
+@Component({
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss']
+})
 export class ModalComponent implements OnInit {
-  term:string = '';
-  formularioGeneral!: FormGroup;
-  @Input() leyenda!:string;
-  @Input() validacion!:boolean;
-  @Input() empleado!:IEmpleado;
-  private isName: string=  NAME_VALIDATE;
-  constructor(private fb:FormBuilder,private empleadoService:EmpleadoService,private modalService: NgbModal) {
 
-   }
 
-  ngOnInit(): void {
+  @Input() empleado!: IEmpleado;
+  @Input() leyenda!: string;
+
+
+  formularioGeneral: FormGroup;
+
+  //TODO: VALIDACIONES
+  private isString: string = VALIDATION_STRING;
+
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private empleadoService: EmpleadoService) {
     this.formularioGeneral = this.iniciarFormulario();
-    this.Empleado();
   }
 
-  private iniciarFormulario():FormGroup{
+  ngOnInit(): void {
+    if (this.empleado) {
+      this.formularioGeneral.patchValue(this.empleado);
+    }
+  }
+
+  private iniciarFormulario() {
     return this.fb.group({
-      id:[''],
-      nombre: ['',[Validators.required,Validators.pattern(this.isName)]],
-      apellido: ['',[Validators.required,Validators.pattern(this.isName)]],
-      puntaje: ['',[Validators.required]]
+      id: [''],
+      nombre: ['', [Validators.required, Validators.pattern(this.isString)]],
+      apellido: ['', [Validators.required, Validators.pattern(this.isString)]],
+      puntaje: ['', [Validators.required]]
     })
   }
 
-  Empleado() {
-    if (this.empleado) {
-      this.formularioGeneral.reset({
-        id: this.empleado.id,
-        nombre: this.empleado.nombre,
-        apellido: this.empleado.apellido,
-        puntaje: this.empleado.puntaje,
-      });
-    }
-  }
+  guardar() {
 
-  guardar(){
     if (this.formularioGeneral.valid) {
-      if (this.empleado?.id) {
+
+
+      if (this.empleado?.id) { //editamos
+
         const empleado = this.formularioGeneral.value;
-        this.empleadoService.editarEmpleado(empleado).subscribe((resp:any)=>{
-          Swal.fire(
-            'Usuario Editado!','',            'success'
-          )
+        this.empleadoService.updateEmpleado(empleado).subscribe((resp: any) => {
+          console.log('EMPLEADO EDITADO')
+          this.empleadoService.getEmpleados();
+          Swal.fire('Empleado Editado!', '', 'success')
           this.formularioGeneral.reset();
-          this.modalService.dismissAll();
-          this.empleadoService.getEmpleado();
-        });
-      }else{
+        })
+
+      } else {//guardamos
         const empleado = this.formularioGeneral.value;
-        this.empleadoService.nuevoEmpleado(empleado).subscribe((resp:any)=>{
-          Swal.fire(
-            'Usuario Agregado!','', 'success'
-          )
-        this.formularioGeneral.reset();
-        this.modalService.dismissAll();
-        this.empleadoService.getEmpleado();
-      });
+        this.empleadoService.saveEmpleado(empleado).subscribe((resp: any) => {
+          console.log('EMPLEADO AGREGADO')
+          this.empleadoService.getEmpleados();
+          Swal.fire('Empleado Agregado!', '', 'success')
+          this.formularioGeneral.reset();
+        })
       }
-    }else{
-      return Object.values(this.formularioGeneral.controls).forEach((control)=> control.markAsTouched());
+
+      this.modalService.dismissAll();
+
     }
+
+    if (this.formularioGeneral.valid) { //agregamos
+
+    }
+
+
+
+
+    return Object.values(this.formularioGeneral.controls).forEach((control) => control.markAsTouched())
   }
 
-  openModal(content: any) {
-    this.modalService.open(content, { centered: true });
-  }
+  esCampoValido(campo: string) {
 
-  esCampoValido(campo:string){
     const validarCampo = this.formularioGeneral.get(campo);
-    return !validarCampo.valid && validarCampo.touched ? 'is-invalid': validarCampo.touched ? 'is-valid': '';
+    return !validarCampo?.valid && validarCampo?.touched ? 'is-invalid' : validarCampo?.touched ? 'is-valid' : '';
+
+  }
+
+  /**
+* Open modal
+* @param content modal content
+*/
+  openModal(content: any, empleado: IEmpleado) {
+    this.empleado = empleado;
+    this.modalService.open(content, { centered: true });
   }
 
 }

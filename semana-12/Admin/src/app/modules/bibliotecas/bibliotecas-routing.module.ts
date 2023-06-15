@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListarBibliotecasComponent } from './pages/listar-bibliotecas/listar-bibliotecas.component';
+import { ListarbibliotecasComponent } from './pages/listarbibliotecas/listarbibliotecas.component';
 
-const routes: Routes = [{
-  path:'listar',
-  component: ListarBibliotecasComponent
-}];
+const routes: Routes = [{path:'listar',component:ListarbibliotecasComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
