@@ -79,5 +79,12 @@ export class ListarComponent implements OnInit {
     })
   }
 
+  canExit():boolean{
+    if (confirm('Seguro que deseas salir?')) {
+      return true;
+    }
+    return false;
+  }
+
 
 }
