@@ -368,7 +368,7 @@
               class="bx bx-lock-open font-size-16 align-middle me-1"></i>
             {{ 'HEADER.LOGIN.LOCK_SCREEN' | translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout()"><i
+          <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout"><i
               class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
             {{ 'HEADER.LOGIN.LOGOUT' | translate}}</a>
         </div>
@@ -416,7 +416,7 @@
                       <div class="col-lg-4"><a class="dropdown-item side-nav-link-ref" routerLinkActive="active" [routerLink]="item.subItems[i + 2]?.link">{{item.subItems[i + 2]?.label | translate}}</a></div>
                   </div>
               </div>
-              
+
                 <div class="dropdown" *ngIf="hasItems(subitem)">
                   <a class="dropdown-item dropdown-toggle" href="javascript: void(0);"
                     (click)="onMenuClick($event)">{{ subitem.label | translate }}
