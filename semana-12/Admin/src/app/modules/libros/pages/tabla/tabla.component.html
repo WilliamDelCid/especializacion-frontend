@@ -1,0 +1,75 @@
+<app-modal></app-modal>
+<div class="table-responsive mb-0">
+  <table class="table table-centered table-nowrap">
+    <thead class="table-light ">
+      <tr>
+        <th style="width: 20px;">
+          <div class="form-check font-size-16 align-middle">
+            <input class="form-check-input" type="checkbox" id="transactionCheck01">
+            <label class="form-check-label" for="transactionCheck01"></label>
+          </div>
+        </th>
+        <th class="align-content-center">ID</th>
+        <th class="align-content-center">Libo</th>
+        <th class="align-content-center">Biblioteca</th>
+        <th class="d-flex justify-content-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of users| paginate: { itemsPerPage: 1, currentPage: p, totalItems: total } ">
+        <td>
+          <div class="form-check font-size-16">
+            <input class="form-check-input" type="checkbox" id="transactionCheck{{data.id}}">
+            <label class="form-check-label" for="transactionCheck{{data.id}}"></label>
+          </div>
+        </td>
+        <td>
+          <a href="javascript: void(0);" class="text-body fw-bold">{{data.id}}</a>
+        </td>
+        <td>{{data.nombre}}</td>
+        <td>{{data.biblioteca.nombre}}</td>
+        <td class="d-flex justify-content-center gap-5">
+          <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="functionedit(data)">Editar</button>
+          <button type="button" class="btn btn-primary btn-sm btn-rounded"
+            (click)="borrarRegistro(data)">Borrar</button>
+        </td>
+      </tr>
+      <!-- <tr *ngFor="let user of users| paginate: { itemsPerPage: 1, currentPage: p, totalItems: total }">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nombre }}</td>
+
+    </tr> -->
+
+    </tbody>
+  </table>
+  <div class="pagination pagination-rounded justify-content-end mb-2">
+
+  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  </div>
+
+  <!-- <div class="pagination pagination-rounded justify-content-end mb-2">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div> -->
+
+  <ng-template #content role="document" let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Card</h5>
+      <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p class="mb-2">
+        Aniemaid:
+        <span class="text-primary">{{libro.id}}</span>
+      </p>
+      <p class="mb-4">
+        Name:
+        <span class="text-primary">{{libro.nombre}}</span>
+      </p>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+</div>
+<!-- end table -->

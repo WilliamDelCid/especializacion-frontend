@@ -87,6 +87,28 @@ export class UsuarioService {
       );
     }
 
+    
+
+    async actualizarFoto(archivo:File,tipo:'usuarios',id:string){
+      try{
+        const url = `${base_url}/upload/${tipo}/${id}`;
+        const formData = new FormData();
+        formData.append('imagen',archivo);
+        const resp = await fetch(url,{
+          method: 'PUT',
+          headers:{ 'x-token':localStorage.getItem('token') || '' },body:formData
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          return data.nombreArchivo;
+        }else{
+          return false;
+        }
+      }catch(error){
+        return false;
+      }
+    }
+
     get rol(): "ADMIN_ROLE" | "USER_ROLE" | string{
       return this.usuario.rol;
     }

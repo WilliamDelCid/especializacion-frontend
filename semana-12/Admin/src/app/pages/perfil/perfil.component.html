@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-4">
+      <app-perfil-card [perfil]="perfil" ></app-perfil-card>
+    </div>
+    <div class="col-xl-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Cambiar Imagen</h4>
+          <div class="text-center">
+            <img *ngIf="!imgTemp" [src]="perfil.imagenUrl" class="img-thumbnail rounded-circle">
+            <img *ngIf="imgTemp" [src]="imgTemp" class="img-thumbnail rounded-circle">
+            <div class="input-group">
+              <input type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="preVisualizarImagen($event)" class="form-control">
+              <button class="btn btn-success btn-block waves-effect waves-light" type="button" id="inputGroupFileAddon04" [disabled]="!imagenSubir" (click)="subirImagen()" >Cambiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
