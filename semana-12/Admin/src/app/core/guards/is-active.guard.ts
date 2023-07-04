@@ -13,6 +13,23 @@ export class IsActiveGuard implements CanActivate {
   valorToken:boolean;
 
   canActivate():Observable<boolean> | boolean{
+    // if (this.usuarioService.token!='') {
+    //   if(this.usuarioService.login){
+    //     if (this.valorToken) {
+    //       this.router.navigate(['/dashboard']);
+    //       console.log('else');
+    //       return false;
+    //     }else{
+    //       console.log(this.usuarioService.token);
+    //       console.log('if');
+    //       return true;
+    //     }
+    //   }else{
+    //     true;
+    //   }
+    // }else{
+    //   return true
+    // }
     const token = this.usuarioService.token;
 
     if(token!==''){
