@@ -25,6 +25,7 @@ import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FakeBackendInterceptor } from './core/helpers/fake-backend';
 import { CookieService } from 'ngx-cookie-service';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
@@ -63,7 +64,7 @@ export function createTranslateLoader(http: HttpClient): any {
     SharedModule,
     ScrollToModule.forRoot(),
     NgbModule,
-
+    PdfViewerModule,
 
   ],
   bootstrap: [AppComponent],

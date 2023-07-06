@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mb-4">Detalle</h4>
+      <input type="file" class="form-control" (change)="onChange($event)" />
+
+    <div *ngIf="myimage" class="row p-3" >
+        <div class="col-3">
+            <img [src]="myimage" width="200px" height="200px" alt>
+        </div>
+        <div class="col-9">
+            <textarea class="m-4" cols="100" rows="20" [(ngModel)]="codigoBase64" ></textarea>
+        </div>
+    </div>
+      <div>
+        <button class="btn btn-dark mt-5" (click)="exportExcelEndpoint()" >Invocar Excel</button>
+      </div>
+      <div>
+        <button class="btn btn-dark mt-5" (click)="download()" >Export Excel</button>
+      </div>
+    </div>
+</div>

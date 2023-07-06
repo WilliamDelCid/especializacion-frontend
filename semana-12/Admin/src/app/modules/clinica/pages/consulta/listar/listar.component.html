@@ -1,0 +1,65 @@
+<div>
+  <h4>CONSULTAS POR ESPECIALIDAD</h4>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mb-4">Especialidad</h4>
+    <div class="text-left">
+      <h5>OFTALMOLOGIA MODI</h5>
+      <h5>PEDIATRIA</h5>
+      <h5>GINECOLOGIA</h5>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <button class="btn btn-warning" (click)="descargarPdf()">Descargar Pdf</button>
+        <button class="btn btn-secondary" (click)="generarConsultaPdf()">Ver Pdf</button>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mb-4">Detalle</h4>
+    <div class="">
+      <button class="btn btn-secondary" (click)="crearPdf()" >Generar Pdf</button>
+      <button class="btn btn-secondary" (click)="pdfMake()">pdfMake</button>
+      <button class="btn btn-secondary" (click)="pdfMake2()">pdfMake Tarea</button>
+    </div>
+    <div id="htmlData">
+    <h4 class="card-title mb-4">Consultas:</h4>
+      <table class="table">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Medico</th>
+                <th>Especialidad</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of ListConsultita">
+                <td>{{item.paciente.nombrePaciente}}</td>
+                <td>{{item.medico.nombreMedico}}</td>
+                <td>{{item.especialidad.nombreEspeciadad}}</td>
+                <td>{{item.fechaConsulta}}</td>
+            </tr>
+            <!-- Puedes agregar más filas aquí -->
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<div class="d-flex gap-3">
+
+  <pdf-viewer [src]="pdfSrc"
+[render-text]="true"
+[original-size]="false"
+style="width: 400px; height: 500px"
+></pdf-viewer>
+<pdf-viewer [src]="pdfSrc2"
+[render-text]="true"
+[original-size]="false"
+style="width: 400px; height: 500px"
+></pdf-viewer>
+
+</div>
