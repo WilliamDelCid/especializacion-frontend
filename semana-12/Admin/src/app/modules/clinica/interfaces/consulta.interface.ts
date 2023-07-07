@@ -43,3 +43,11 @@ export interface Paciente{
   telefonoPaciente: string;
   emailPaciente: string;
 }
+
+export interface PacientePrueba{
+  nombrePaciente: string;
+  apellidoPaciente: string;
+  direccionPaciente: string;
+  telefonoPaciente: string;
+  emailPaciente: string;
+}

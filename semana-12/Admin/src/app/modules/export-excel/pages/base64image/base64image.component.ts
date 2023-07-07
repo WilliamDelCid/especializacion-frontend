@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import { ExportService } from '../../services/export.service';
+import { IConsultaExcelTabla, IConsultaExcelTablaPaciente } from '../../interface/excel.interface';
 
 @Component({
   selector: 'app-base64image',
@@ -53,7 +54,20 @@ export class Base64imageComponent implements OnInit {
   }
 
   download():void{
-    this.exportService.downloadExcel();
+    // this.exportService.downloadExcel();
+    this.exportService.getConsultaExportExcelPaciente().subscribe((res:IConsultaExcelTablaPaciente)=>{
+    this.exportService.getConsultaExportExcel().subscribe((response:IConsultaExcelTabla)=>{
+      this.exportService.downloadExcel(response,res);
+    })
+    })
+  }
+
+
+  downloadPaciente():void{
+    // this.exportService.downloadExcel();
+    this.exportService.getConsultaExportExcelPaciente().subscribe((response:IConsultaExcelTablaPaciente)=>{
+      this.exportService.downloadExcelPaciente(response);
+    })
   }
 
 
