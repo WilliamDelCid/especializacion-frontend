@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'bibliotecas', component: LayoutComponent, loadChildren: () => import('./modules/bibliotecas/bibliotecas.module').then(m => m.BibliotecasModule),canActivate:[AuthGuard],canLoad:[AuthGuard] },
   { path: 'libro', component: LayoutComponent, loadChildren: () => import('./modules/libro/libro.module').then(m => m.LibroModule),canActivate:[AuthGuard],canLoad:[AuthGuard] },
   { path: 'clinica', component: LayoutComponent, loadChildren: () => import('./modules/clinica/clinica.module').then(m => m.ClinicaModule),canActivate:[AuthGuard],canLoad:[AuthGuard] },
+  { path: 'exportar', component: LayoutComponent, loadChildren: () => import('./modules/exportar/exportar.module').then(m => m.ExportarModule),canActivate:[AuthGuard],canLoad:[AuthGuard] },
   { path: 'crypto-ico-landing', component: CyptolandingComponent,canActivate:[AuthGuard],canLoad:[AuthGuard] },
   { path: '**', component: Page404Component },
 ];
