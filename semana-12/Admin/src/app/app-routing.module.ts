@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'libro', component: LayoutComponent, loadChildren: () => import('./modules/libro/libro.module').then(m => m.LibroModule), },
   { path: 'clinica', component: LayoutComponent, loadChildren: () => import('./modules/clinica/clinica.module').then(m => m.ClinicaModule), },
   { path: 'exportar', component: LayoutComponent, loadChildren: () => import('./modules/exportar/exportar.module').then(m => m.ExportarModule), },
+  { path: 'read', component: LayoutComponent, loadChildren: () => import('./modules/read-excel/read-excel.module').then(m => m.ReadExcelModule), },
   { path: 'crypto-ico-landing', component: CyptolandingComponent, },
   { path: '**', component: Page404Component },
 ];

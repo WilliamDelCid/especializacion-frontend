@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            Leer archivos Excel
+          </div>
+          <input type="file" class="form-control" (change)="leerFile($event)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <table class="table" *ngIf="datos">
+    <thead>
+      <tr>
+        <th>Correlativo</th>
+        <th>Nombre Medico</th>
+        <th>Apellido Medico</th>
+        <th>JVPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of datos.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage); let i = index">
+        <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+        <td>{{ x.nombreMedico }}</td>
+        <td>{{ x.apellidoMedico }}</td>
+        <td>{{ x.jvpm }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pagination [boundaryLinks]="showBoundaryLinks" [totalItems]="datos.length" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)"></pagination>
+
+</div>
+<!-- <div class="row">
+  <div class="col-xs-12 col-12">
+    <pagination [boundaryLinks]="showBoundaryLinks" [totalItems]="55"></pagination>
+  </div>
+</div> -->
+
+
+<!-- <div class="row">
+  <div class="col-xs-12 col-12">
+    <div class="content-wrapper">
+      <p class="content-item" *ngFor="let content of returnedArray">{{content}}</p>
+    </div>
+    <pagination [totalItems]="contentArray.length" (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+</div> -->
