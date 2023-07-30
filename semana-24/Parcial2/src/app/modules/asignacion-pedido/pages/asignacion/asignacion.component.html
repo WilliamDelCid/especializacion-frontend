@@ -1,0 +1,147 @@
+<section class="mainConteiner">
+  <section class="container_top">
+    <div>
+      <h1><i class="bi bi-boxes"></i> Asignacion de Producto</h1>
+    </div>
+    <div>
+      <button
+        (click)="openModal(myModalContent)"
+        class="btn btn-secondary mt-5 d-flex justify-content-center gap-2"
+      >
+        <i class="bi bi-bag-plus-fill"></i>Agregar Producto
+      </button>
+    </div>
+    <ng-template #myModalContent>
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar nuevo pedido</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formularioGeneral">
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label">Cantidad de Producto</label>
+              <input
+                type="text"
+                name="cantidad"
+                class="form-control mb-3"
+                formControlName="cantidad"
+                [class]="esCampoValido('cantidad')"
+              />
+              <div class="invalid-feedback">
+                <span *ngIf="formularioGeneral.get('cantidad')?.errors?.['required']"
+                  >Requiere un nombre</span
+                >
+
+                <span *ngIf="formularioGeneral.get('cantidad')?.errors?.['pattern']"
+                  >Solamente se permiten letras</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label class="form-label">N. de Pedido</label>
+              <ng-select
+                formControlName="pedido"
+                name="pedido"
+                style="margin-top: -15px"
+                [class]="esCampoValido('pedido')"
+
+              >
+                <ng-option *ngFor="let car of cars" [value]="car.id">{{
+                  car.name
+                }}</ng-option>
+              </ng-select>
+              <div class="invalid-feedback">
+                <span *ngIf="formularioGeneral.get('pedido')?.errors?.['required']"
+                  >Requiere un nombre</span
+                >
+
+                <span *ngIf="formularioGeneral.get('pedido')?.errors?.['pattern']"
+                  >Solamente se permiten letras</span
+                >
+              </div>
+            </div>
+            <div class="col-6">
+              <label
+
+                class="form-label"
+                >Nombre del Producto</label
+              >
+              <ng-select
+              [class]="esCampoValido('producto')"
+              formControlName="producto"
+              name="producto" style="margin-top: -15px">
+                <ng-option *ngFor="let car of cars" [value]="car.id">{{
+                  car.name
+                }}</ng-option>
+              </ng-select>
+              <div class="invalid-feedback">
+                <span *ngIf="formularioGeneral.get('producto')?.errors?.['required']"
+                  >Requiere un nombre</span
+                >
+
+                <span *ngIf="formularioGeneral.get('producto')?.errors?.['pattern']"
+                  >Solamente se permiten letras</span
+                >
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="close()">
+          Cerrar
+        </button>
+        <button type="submit" class="btn btn-success" (click)="guardar()">
+          Guardar
+        </button>
+      </div>
+    </ng-template>
+  </section>
+  <section class="container_bottom">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>
+              <div class="d-flex justify-content-center gap-3">
+                <button
+                  (click)="openModal(myModalContent)"
+                  class="btn btn-success"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button (click)="delete(1)" class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

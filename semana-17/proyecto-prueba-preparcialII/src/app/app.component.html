@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid" style="margin-inline: 60px;">
+    <a class="navbar-brand" href="#">
+      <img width="250px" style="object-fit: contain;" height="100px" src="https://laconstancia.com/wp-content/uploads/2021/07/02-LOGO-LA-CONSTANCIA-APROBADO-2022_5-1024x288.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link active"  href="#">
+            <i class="bi bi-house"></i> Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-person"></i> Perfil
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Submenú 1</a></li>
+            <li><a class="dropdown-item" href="#">Submenú 2</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Submenú 3</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<button class="btn btn-success" (click)="openModal(myModalContent)">Abrir modal</button>
+
+<ng-template #myModalContent>
+
+  <div class="modal-header">
+    <h4 class="modal-title">Título del modal</h4>
+
+  </div>
+  <div class="modal-body">
+   <ng-select [multiple]="true" [(ngModel)]="selectedCar">
+    <ng-option *ngFor="let car of cars" [value]="car.id" >{{car.name}}</ng-option>
+    <ng-option [value]="'custom'">Custom</ng-option>
+</ng-select>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Cerrar</button>
+  </div>
+</ng-template>
