@@ -1,2 +1,9 @@
 # Parcial2
 ![Vista previa](src/assets/Imagen.jpeg)
+![Vista previa](src/assets/Img.jpeg)
+![Vista previa](src/assets/Img2.jpeg)
+![Vista previa](src/assets/Img3.jpeg)
+![Vista previa](src/assets/Img4.jpeg)
+![Vista previa](src/assets/Img5.jpeg)
+![Vista previa](src/assets/Img6.jpeg)
+![Vista previa](src/assets/Img7.jpeg)
