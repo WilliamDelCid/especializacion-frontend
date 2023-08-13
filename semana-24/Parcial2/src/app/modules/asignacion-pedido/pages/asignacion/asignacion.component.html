@@ -4,12 +4,20 @@
       <h1><i class="bi bi-boxes"></i> Asignacion de Producto</h1>
     </div>
     <div>
-      <button
-        (click)="openModal(myModalContent)"
-        class="btn btn-secondary mt-5 d-flex justify-content-center gap-2"
-      >
-        <i class="bi bi-bag-plus-fill"></i>Agregar Producto
-      </button>
+      <div class="d-flex gap-4">
+        <button
+          (click)="openModal(myModalContent)"
+          class="btn btn-secondary mt-5 d-flex justify-content-center"
+        >
+          <i class="bi bi-bag-plus-fill"></i>Agregar Producto
+        </button>
+        <button
+          class="btn btn-success mt-5 d-flex justify-content-center gap-2"
+          (click)="generatePDF('casita', listAsignacion.content)"
+        >
+          <i class="bi bi-file-earmark-pdf"></i>Generar PDF
+        </button>
+      </div>
     </div>
     <ng-template #myModalContent>
       <div class="modal-header">
@@ -17,6 +25,7 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="formularioGeneral">
+          <input type="hidden" formControlName="idAsignacionProducto" />
           <div class="row">
             <div class="col-6">
               <label class="form-label">Cantidad de Producto</label>
@@ -28,11 +37,13 @@
                 [class]="esCampoValido('cantidad')"
               />
               <div class="invalid-feedback">
-                <span *ngIf="formularioGeneral.get('cantidad')?.errors?.['required']"
+                <span
+                  *ngIf="formularioGeneral.get('cantidad')?.errors?.['required']"
                   >Requiere un nombre</span
                 >
 
-                <span *ngIf="formularioGeneral.get('cantidad')?.errors?.['pattern']"
+                <span
+                  *ngIf="formularioGeneral.get('cantidad')?.errors?.['pattern']"
                   >Solamente se permiten letras</span
                 >
               </div>
@@ -42,46 +53,46 @@
             <div class="col-6">
               <label class="form-label">N. de Pedido</label>
               <ng-select
-                formControlName="pedido"
-                name="pedido"
+                formControlName="pedidos"
+                name="pedidos"
                 style="margin-top: -15px"
                 [class]="esCampoValido('pedido')"
-
               >
-                <ng-option *ngFor="let car of cars" [value]="car.id">{{
-                  car.name
-                }}</ng-option>
+                <ng-option
+                  *ngFor="let data of listPedidos"
+                  [value]="data.idPedido"
+                  >{{ data.idPedido }}</ng-option
+                >
               </ng-select>
               <div class="invalid-feedback">
-                <span *ngIf="formularioGeneral.get('pedido')?.errors?.['required']"
+                <span
+                  *ngIf="formularioGeneral.get('pedidos')?.errors?.['required']"
                   >Requiere un nombre</span
-                >
-
-                <span *ngIf="formularioGeneral.get('pedido')?.errors?.['pattern']"
-                  >Solamente se permiten letras</span
                 >
               </div>
             </div>
             <div class="col-6">
-              <label
-
-                class="form-label"
-                >Nombre del Producto</label
-              >
+              <label class="form-label">Nombre del Producto</label>
               <ng-select
-              [class]="esCampoValido('producto')"
-              formControlName="producto"
-              name="producto" style="margin-top: -15px">
-                <ng-option *ngFor="let car of cars" [value]="car.id">{{
-                  car.name
-                }}</ng-option>
+                [class]="esCampoValido('producto')"
+                formControlName="producto"
+                name="producto"
+                style="margin-top: -15px"
+              >
+                <ng-option
+                  *ngFor="let data of listProductos"
+                  [value]="data.idProducto"
+                  >{{ data.nombreProducto }}</ng-option
+                >
               </ng-select>
               <div class="invalid-feedback">
-                <span *ngIf="formularioGeneral.get('producto')?.errors?.['required']"
+                <span
+                  *ngIf="formularioGeneral.get('producto')?.errors?.['required']"
                   >Requiere un nombre</span
                 >
 
-                <span *ngIf="formularioGeneral.get('producto')?.errors?.['pattern']"
+                <span
+                  *ngIf="formularioGeneral.get('producto')?.errors?.['pattern']"
                   >Solamente se permiten letras</span
                 >
               </div>
@@ -105,43 +116,48 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Pedido</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>
-              <div class="d-flex justify-content-center gap-3">
-                <button
-                  (click)="openModal(myModalContent)"
-                  class="btn btn-success"
-                >
-                  <i class="bi bi-pencil-square"></i>
-                </button>
-                <button (click)="delete(1)" class="btn btn-danger">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          <ng-container
+            *ngFor="let data of listAsignacion.content; let i = index"
+          >
+            <tr>
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ data.producto.nombreProducto }}</td>
+              <td>{{ data.pedidos.idPedido }}</td>
+              <th scope="row">{{ data.cantidad }}</th>
+              <td>
+                <div class="d-flex justify-content-center gap-3">
+                  <button
+                    (click)="openModal(myModalContent, data)"
+                    class="btn btn-success"
+                  >
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+                  <button (click)="delete(data)" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </div>
   </section>
+  <div class="mb-4 mt-4 d-flex justify-content-end">
+    <ngb-pagination
+      [pageSize]="listAsignacion.pageable.pageSize"
+      [collectionSize]="listAsignacion.totalElements"
+      (pageChange)="pageChange($event)"
+      [(page)]="currentPage"
+    ></ngb-pagination>
+  </div>
+
+
 </section>
